@@ -1,0 +1,8 @@
+Code,Nom,stock,unite,achat,vente,PF/MP
+E001,Circuit principal,500,pieces,50,20,MP
+E002,Plastique,300,kilogrammes,3,NA,MP
+E003,Plaques aluminium,200,pieces,20,10,MP
+E004,Servomoteurs,100,pieces,15,10,PF
+E005,Propulsions,30,pieces,NA,15,PF
+E006,Coques,30,pieces,NA,NA,PF
+E007,Drones,20,pieces,NA,150,PF
