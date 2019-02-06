@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class FichierCSV{	
+public abstract class FichierCSV implements BaseDeDonnees{	
 	protected File path;
 	public FichierCSV(String path) {
 		this.path=new File(path);
@@ -26,10 +26,6 @@ public abstract class FichierCSV{
 		}	
 		return ligne;
 	}
-	
-	public abstract void Charger();
-	
-	public abstract String[][] Ecriture();
 
 	
 	

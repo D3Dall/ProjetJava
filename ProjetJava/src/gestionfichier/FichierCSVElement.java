@@ -11,11 +11,12 @@ import core.ProduitsFinis;
 
 public class FichierCSVElement extends FichierCSV{
 
-	public FichierCSVElement() {
-		super("Data/Elements.csv");
+	
+	public FichierCSVElement(String path) {
+		super(path);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * Charge les données sur les Eléments écrites dans le fichier Element
 	 */
@@ -48,9 +49,7 @@ public class FichierCSVElement extends FichierCSV{
 	}
 
 	@Override
-	public String[][] Ecriture() {
-		// TODO Auto-generated method stub
-		return null;
+	public void Ecriture() {
 	}
 
 }

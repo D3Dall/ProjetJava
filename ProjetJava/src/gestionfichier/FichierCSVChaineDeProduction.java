@@ -13,11 +13,11 @@ import core.Stockage;
 
 public class FichierCSVChaineDeProduction extends FichierCSV{
 
-	public FichierCSVChaineDeProduction() {
-		super("Data/Chaines.csv");
+	public FichierCSVChaineDeProduction(String path) {
+		super(path);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public ArrayList<String> Lecture(){
 		ArrayList<String> ligne = new ArrayList<String>();
 		Scanner sc;
@@ -73,12 +73,16 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 			cp.ajouterElementPourDictionnaireDeProductionEnEntree(elem, quantitee);
 		}
 	}
-	
 
 	@Override
-	public String[][] Ecriture() {
+	public void Ecriture() {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
+
+
+
+
+
 
 }
