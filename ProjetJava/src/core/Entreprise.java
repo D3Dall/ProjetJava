@@ -19,7 +19,7 @@ public class Entreprise {
         /**
          * premiere entreprise cree
          */
-	public static Entreprise enteprise;
+	public static Entreprise entreprise;
 	
         /**
          * Instancie une entreprise et si c'est la premiere l'indique en static
@@ -28,8 +28,8 @@ public class Entreprise {
 		this.listeElements = new ArrayList<Element> ();
 		this.listeChaineProduction = new ArrayList<ChaineProduction> ();
 		this.listePersonnel = new ArrayList<Personnel> ();
-		if(Entreprise.enteprise == null) {
-			Entreprise.enteprise = this;
+		if(Entreprise.entreprise == null) {
+			Entreprise.entreprise = this;
 		}
 		
 	}
@@ -159,7 +159,7 @@ public class Entreprise {
          *  liste de chaine de production
          * @return la liste des chaines de production qui sont active (niveau d'activite>0 et stock suffisant)
          */
-        public ArrayList<ChaineProduction> chainesProductionActive(ArrayList<ChaineProduction> chaineproduction){
+    public ArrayList<ChaineProduction> chainesProductionActive(ArrayList<ChaineProduction> chaineproduction){
 		ArrayList<ChaineProduction> chainesProductionActive = new ArrayList<ChaineProduction>();
 		for(ChaineProduction cp: chaineproduction) {
 			if (cp.peutProduire()) {

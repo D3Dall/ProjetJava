@@ -16,9 +16,9 @@ public class Main {
 		bdElem.Charger();
 		bdCP.Charger();
 		
+		
 		Fenetre fen = new FenetreApplication();
 		
-
 	}
 
 }

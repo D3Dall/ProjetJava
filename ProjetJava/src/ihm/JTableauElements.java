@@ -9,10 +9,15 @@ import core.Element;
 import core.Entreprise;
 
 public class JTableauElements extends JTableau {
+	private static String[] titre = {"Code", "Nom", "Quantité", "Prix d'achat", "Prix de Vente"};
 
 	public JTableauElements() {
-		String[] titre = {"Code", "Nom", "Quantité", "Prix d'achat", "Prix de Vente"};
-		this.tableau = new JTable(this.construireData(), titre) ;
+		this(Entreprise.entreprise.getListeElement());
+	}
+	
+	public JTableauElements(ArrayList<Element> listeElem) {
+		this.construireData(listeElem);
+		this.tableau = new JTable(this.construireData(listeElem), titre);
 		
 		this.setLayout(new BorderLayout());
 		this.add(this.tableau.getTableHeader(), BorderLayout.NORTH);
@@ -23,8 +28,7 @@ public class JTableauElements extends JTableau {
 	 * Construit le tableau d'élément en fonction de la liste se trouvant dans Entreprise
 	 * @return un tableau de données décrivant les éléments (code, nom, quantité, prix à l'achat, prix de vente)
 	 */
-	private Object[][] construireData(){ 
-		ArrayList<Element> listeElem = Entreprise.enteprise.getListeElement();
+	private Object[][] construireData(ArrayList<Element> listeElem){
 		Object[][] tab=new Object[listeElem.size()][5];
 		for(int i=0; i<listeElem.size(); i++) {
 			Element e = listeElem.get(i);
@@ -41,9 +45,7 @@ public class JTableauElements extends JTableau {
 			}else {
 				tab[i][4] = e.getPrixVente() + " €";
 			}
-			
 		}
-		return tab;
+		return tab;	
 	}
-
 }

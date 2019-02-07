@@ -43,10 +43,13 @@ public class JRechercheChaineProduction extends JPanel{
             	String code = codefield.getText().toString(); 
         		String nom = nomfield.getText().toString(); 
         		int temps = (int)tempsfield.getValue();
-        		/*
-        		 * A continuer
-        		 * 
-        		 */
+        		panelchaineprod.actualiserListeChaineProduction(code, nom, temps);
+            }
+        });
+		
+		this.acceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	panelchaineprod.acceder();
             }
         });
 		

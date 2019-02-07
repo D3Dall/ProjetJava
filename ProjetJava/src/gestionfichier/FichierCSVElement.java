@@ -41,9 +41,9 @@ public class FichierCSVElement extends FichierCSV{
 				vente = Double.parseDouble(attribut[5]);
 			}
 			if (attribut[6].equals("PF")) {
-				Entreprise.enteprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente));
+				Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente));
 			}else {
-				Entreprise.enteprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente));
+				Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente));
 			}
 		}		
 	}

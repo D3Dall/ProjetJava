@@ -14,7 +14,7 @@ import core.Entreprise;
 public class JEtatStock extends JPanel{
 
 	private JLabel titre;
-	private JTableau tableaupanel;
+	private JTableauElements tableaupanel;
 	
 	public JEtatStock() {
 		this.setLayout(new BorderLayout());

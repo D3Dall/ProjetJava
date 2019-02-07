@@ -149,30 +149,11 @@ public class ChaineProduction {
          *  temps de la probable chaine de production
          * @return vrai s'il y a correspondance, faux sinon
          */
-        public boolean isChaineDeProduction(String code, String nom, int temps) {
-            if(code!=null){
-                if(this.codeChaineProduction.contains(code)){
-                    return true;
-                }
-            }else{
-                if (nom!=null){
-                    if(this.nom.contains(nom)){
-                        if(temps!=0){
-                            if(this.temps==temps){
-                                return true;
-                            }
-                        }else{
-                            return true;
-                        }
-                    }else{
-                        if(this.temps==temps){
-                            return true;
-                        }
-                    }
-                }
-            }
-            
-            return false;
+    public boolean isChaineDeProduction(String code, String nom, int temps) {
+        if(this.codeChaineProduction.contains(code) && this.nom.contains(nom) && (temps==this.temps || temps==0)){
+        	return true; 
+        }
+        return false;
 	}
         
         /**
@@ -296,6 +277,21 @@ public class ChaineProduction {
 
     public ArrayList<Production> getListeproduction() {
         return listeproduction;
+    }
+    
+    public ArrayList<Element> getElementsEnEntree(){
+    	ArrayList<Element> listeElem = new ArrayList<Element>();
+    	for (Element e : this.entree.keySet()) {
+    		listeElem.add(e);
+    	}
+    	return listeElem;
+    }
+    public ArrayList<Element> getElementsEnSortie(){
+    	ArrayList<Element> listeElem = new ArrayList<Element>();
+    	for (Element e : this.sortie.keySet()) {
+    		listeElem.add(e);
+    	}
+    	return listeElem;
     }
         
         

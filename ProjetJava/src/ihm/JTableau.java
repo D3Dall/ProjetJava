@@ -9,6 +9,9 @@ public class JTableau extends JPanel {
 
 	protected JTable tableau;
 	
+	public JTable getTableau() {
+		return this.tableau;
+	}
 	
 	
 }

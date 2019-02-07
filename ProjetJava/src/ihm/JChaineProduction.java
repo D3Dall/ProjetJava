@@ -39,7 +39,7 @@ public class JChaineProduction extends JPanel{
 	}
 	
 	public void actualiserListeChaineProduction(String code, String nom, int temps) {
-		this.scrolltab.setViewportView(new JTableauChaineProduction(Entreprise.enteprise.chercherChaineDeProduction(code, nom, temps)));		
+		this.scrolltab.setViewportView(new JTableauChaineProduction(Entreprise.entreprise.chercherChaineDeProduction(code, nom, temps)));		
 		this.scrolltab.repaint();
 		this.scrolltab.revalidate();
 	
@@ -47,6 +47,10 @@ public class JChaineProduction extends JPanel{
 	
 	public void changerPanel(ChaineProduction cp) {
 		this.fenetre.setPanel(new JPanel());//A changer
+	}
+	
+	public void acceder() {
+		this.fenetre.setPanel(new JDetailChaineProduction(this.tableaupanel.getData(this.tableaupanel.getTableau().getSelectedRow())));
 	}
 	
 }

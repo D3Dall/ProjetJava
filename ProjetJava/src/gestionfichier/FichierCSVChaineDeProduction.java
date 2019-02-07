@@ -51,7 +51,7 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 			String nom = attribut[1];
 			int temps = Integer.parseInt(attribut[2]);
 			ChaineProduction cp = new ChaineProduction(code, nom, temps);
-			Entreprise.enteprise.ajouterChaineProductionDansEntreprise(cp);
+			Entreprise.entreprise.ajouterChaineProductionDansEntreprise(cp);
 			ChargerContenuSortie(attribut, cp, SortieCodeIndex);
 			ChargerContenuEntree(attribut, cp, SortieCodeIndex);
 		}		
@@ -61,7 +61,7 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 		for (int i = indexOfSortie; i<ligne.length; i+=2) {
 			String codeElem = ligne[i].substring(ligne[i].indexOf('(')+1);
 			float quantitee = Float.parseFloat(ligne[i+1].substring(0, ligne[i+1].indexOf(')')));
-			Element elem = Entreprise.enteprise.rechercherElement(codeElem);
+			Element elem = Entreprise.entreprise.rechercherElement(codeElem);
 			cp.ajouterElementPourDictionnaireDeProductionEnSortie(elem, quantitee);
 		}
 	}
@@ -69,7 +69,7 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 		for (int i = 3; i<ligne.length && i<indexOfSortie; i+=2) {
 			String codeElem = ligne[i].substring(ligne[i].indexOf('(')+1);
 			float quantitee = Float.parseFloat(ligne[i+1].substring(0, ligne[i+1].indexOf(')')));
-			Element elem = Entreprise.enteprise.rechercherElement(codeElem);
+			Element elem = Entreprise.entreprise.rechercherElement(codeElem);
 			cp.ajouterElementPourDictionnaireDeProductionEnEntree(elem, quantitee);
 		}
 	}
