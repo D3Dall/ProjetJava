@@ -71,7 +71,8 @@ public class JMenuA extends JPanel{
                 	this.fenetre.setPanel(new JEtatStock());
                     break;
                 case "Liste des chaines de production" :
-                	this.fenetre.setPanel(new JListeProductions(this.fenetre));
+                	this.fenetre.setPanel(new JChaineProduction(this.fenetre));
+                	break;
             }
 	        }catch(NullPointerException e){
 	            

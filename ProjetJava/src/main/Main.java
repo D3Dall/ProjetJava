@@ -8,8 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		BaseDeDonnees bdElem = new FichierCSVElement("Data/Elements.csv");
-		BaseDeDonnees bdCP = new FichierCSVChaineDeProduction("Data/Chaines.csv");
+		BaseDeDonnees bdElem = new FichierCSVElement("ProjetJava/Data/Elements.csv");
+		BaseDeDonnees bdCP = new FichierCSVChaineDeProduction("ProjetJava/Data/Chaines.csv");
 		
 		Entreprise entreprise = new Entreprise();
 		
@@ -17,10 +17,6 @@ public class Main {
 		bdCP.Charger();
 		
 		Fenetre fen = new FenetreApplication();
-		
-		
-
-		
 		
 
 	}

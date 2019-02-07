@@ -189,10 +189,7 @@ public class Entreprise {
 				}
 			}
 			cpfirst.produire();
-			chainesProductionActive=this.chainesProductionActive();
-			
-			
-			
+			chainesProductionActive=this.chainesProductionActive();			
 		}	
 	}
 	

@@ -265,11 +265,11 @@ public class ChaineProduction {
          */
 	public void attribuerNiveauActivite(int niveauActivitee) {
 		this.niveauActivitee= niveauActivitee;
-	}
+	}	
 	
-        /**
-         * @return Le temps d'une production de la chaine de production
-         */
+    /**
+     * @return Le temps d'une production de la chaine de production
+     */
 	public int getTemps() {
 		return this.temps;
 	}
