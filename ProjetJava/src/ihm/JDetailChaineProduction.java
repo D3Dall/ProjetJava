@@ -13,6 +13,7 @@ public class JDetailChaineProduction extends JPanel{
 	private ChaineProduction chaine;
 	
 	private JPanel information;
+	private JPanel inputact;
 	
 	private JLabel nom;
 	private JLabel code;
@@ -37,12 +38,12 @@ public class JDetailChaineProduction extends JPanel{
 		this.chaine = cp;
 		
 		this.information = new JPanel();
-		this.information.setLayout(new GridLayout(3,2));
+		this.information.setLayout(new GridLayout(4,2));
 		
-		GridLayout l = new GridLayout(5,1);
-		l.setVgap(0);
-		l.setHgap(0);
-		this.setLayout(l);
+		this.inputact = new JPanel();
+		this.inputact.setLayout(new GridLayout(1, 2));
+		
+		this.setLayout(new GridLayout(6,1));
 		
 		
 		this.nom = new JLabel("Nom : ");
@@ -69,7 +70,11 @@ public class JDetailChaineProduction extends JPanel{
 		this.information.add(this.nomL);
 		this.information.add(this.temps);
 		this.information.add(this.tempsL);
+		this.information.add(this.lvlAct);
+		this.inputact.add(this.lvlActS);
+		this.inputact.add(this.changerlvlAct);
 		
+		this.information.add(this.inputact);
 		this.add(this.information);
 		this.add(this.titretabEntree);
 		this.add(this.tabEntree);
