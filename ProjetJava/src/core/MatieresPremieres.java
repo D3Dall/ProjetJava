@@ -35,7 +35,7 @@ public class MatieresPremieres extends Element{
          * @param prixVente 
          *  prix a la vente de la Matiere Premiere 
          */
-	public MatieresPremieres(String codeElement, String nom, String unitee, double quantite, double prixAchat, double prixVente) {
+	public MatieresPremieres(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente) {
 		super(codeElement, nom, unitee, quantite, prixAchat, prixVente);
 		// TODO Auto-generated constructor stub
 	}

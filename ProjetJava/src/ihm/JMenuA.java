@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -66,6 +67,7 @@ public class JMenuA extends JPanel{
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) this.arbre.getSelectionPath().getLastPathComponent();
             String choix = node.getUserObject().toString();
             javax.swing.JPanel jp;
+            System.out.println("choix : " +choix);
             switch(choix){
                 case "Etat des stocks" :
                 	this.fenetre.setPanel(new JEtatStock());

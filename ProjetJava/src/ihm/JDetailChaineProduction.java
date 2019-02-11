@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 
 import core.ChaineProduction;
 
@@ -27,12 +28,8 @@ public class JDetailChaineProduction extends JPanel{
 	
 	private JButton changerlvlAct;
 	
-	private JLabel titretabEntree;
-	private JLabel titretabSortie;
-	
-	
-	private JTableauElements tabEntree;
-	private JTableauElements tabSortie;
+	private JTableauTitre tabEntree;
+	private JTableauTitre tabSortie;
 	
 	public JDetailChaineProduction(ChaineProduction cp) {
 		this.chaine = cp;
@@ -55,14 +52,16 @@ public class JDetailChaineProduction extends JPanel{
 		this.codeL = new JLabel(this.chaine.getCodeChaineProduction());
 		this.lvlActS = new JSpinner(); this.lvlActS.setValue(this.chaine.getNiveauActivitee());
 		this.changerlvlAct = new JButton("Confirmer");
-		this.tempsL = new JLabel (this.chaine.getTemps()+"");
+		this.changerlvlAct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	chaine.attribuerNiveauActivite((int)lvlActS.getValue());
+            }
+        });
 		
-		this.titretabEntree = new JLabel("Element en entrée : ");
-		this.titretabSortie = new JLabel("Element en sortie : ");
+		this.tempsL = new JLabel (this.chaine.getTemps()+"");		
 		
-		
-		this.tabEntree = new JTableauElements(this.chaine.getElementsEnEntree());
-		this.tabSortie = new JTableauElements(this.chaine.getElementsEnSortie());
+		this.tabEntree = new JTableauTitre("Element en entrée", new JTableau(new JModeleTabCPEE(this.chaine.getEntree())));
+		this.tabSortie = new JTableauTitre("Element en sortie", new JTableau(new JModeleTabCPES(this.chaine.getSortie())));
 		
 		this.information.add(this.code);
 		this.information.add(this.codeL);
@@ -76,9 +75,7 @@ public class JDetailChaineProduction extends JPanel{
 		
 		this.information.add(this.inputact);
 		this.add(this.information);
-		this.add(this.titretabEntree);
 		this.add(this.tabEntree);
-		this.add(this.titretabSortie);
 		this.add(this.tabSortie);
 		
 				

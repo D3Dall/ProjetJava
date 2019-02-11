@@ -57,7 +57,7 @@ public abstract class Element {
          * @param prixVente 
          *  prix a la vente de l'element
          */
-	public Element(String codeElement, String nom, String unitee, double quantite, double prixAchat, double prixVente) {
+	public Element(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente) {
 		this.codeElement = codeElement;
 		this.nom = nom;
 		this.stock = new Stockage(quantite, unitee);

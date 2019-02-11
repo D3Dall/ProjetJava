@@ -28,12 +28,12 @@ public class ChaineProduction {
          * Dictionnaire des Elements en ENTREE
          * Cela correspond a la quantitee des elements qui seront consommes pour une production
          */
-	private HashMap<Element, Double> entree;
+	private ArrayList<Couple<Element, Float>> entree;
         /**
          * Dictionnaire des Elements en SORTIE
          * Cela correspond a la quantitee des elements qui seront produits pour une production
          */
-	private HashMap<Element, Double> sortie;
+	private ArrayList<Couple<Element, Float>> sortie;
 	
         /**
          * Liste des productions faites par la chaine de production
@@ -56,8 +56,8 @@ public class ChaineProduction {
 		this.nom = nom;
 		this.niveauActivitee = niveauActivitee;
 		this.temps = temps;
-		this.entree = new HashMap<Element, Double> ();
-		this.sortie = new HashMap<Element, Double> ();
+		this.entree = new ArrayList<Couple<Element, Float>> ();
+		this.sortie = new ArrayList<Couple<Element, Float>> ();
 		this.listeproduction = new ArrayList<Production>();
 	}
         
@@ -82,8 +82,8 @@ public class ChaineProduction {
          * @param quantitee 
          *  La quantite associé à l'element que l'on ajoute
          */
-	public void ajouterElementPourDictionnaireDeProductionEnEntree(Element elem, double quantitee) {
-		this.entree.put(elem, quantitee);
+	public void ajouterElementPourDictionnaireDeProductionEnEntree(Element elem, float quantitee) {
+		this.entree.add(new Couple(elem, quantitee));
 	}
         
         /**
@@ -93,8 +93,8 @@ public class ChaineProduction {
          * @param quantitee 
          *  La quantite associé à l'element que l'on ajoute
          */
-	public void ajouterElementPourDictionnaireDeProductionEnSortie(Element elem, double quantitee) {
-		this.sortie.put(elem, quantitee);
+	public void ajouterElementPourDictionnaireDeProductionEnSortie(Element elem, float quantitee) {
+		this.sortie.add(new Couple(elem, quantitee));
 	}
         
         /**
@@ -122,7 +122,7 @@ public class ChaineProduction {
          * @param quantitee 
          *  La nouvelle quantite que l'on veut integrer
          */
-	public void modifierElementPourDictionnaireDeProductionEnEntree(Element elem, double quantitee) {
+	public void modifierElementPourDictionnaireDeProductionEnEntree(Element elem, float quantitee) {
 		this.ajouterElementPourDictionnaireDeProductionEnEntree(elem, quantitee);
 	}
         
@@ -133,7 +133,7 @@ public class ChaineProduction {
          * @param quantitee 
          *  La nouvelle quantite que l'on veut integrer
          */
-	public void modifierElementPourDictionnaireDeProductionEnSortie(Element elem, double quantitee) {
+	public void modifierElementPourDictionnaireDeProductionEnSortie(Element elem, float quantitee) {
 		this.ajouterElementPourDictionnaireDeProductionEnSortie(elem, quantitee);
 	}
 	
@@ -163,12 +163,12 @@ public class ChaineProduction {
 	public String toString() {
 		String src = this.codeChaineProduction + " - " + this.nom + " - " + this.temps;
 		src += "\nElement en Entr�e :\n";
-		for (Element e : this.entree.keySet()) {
-			src += e + "Quantitee dont on a besoin " + this.entree.get(e);
+		for (Couple<Element, Float> c : this.entree) {
+			src += c.getObjeta() + "Quantitee dont on a besoin " + c.getObjetb();
 		}
 		src += "\nElement en Sortie :\n";
-		for(Element e : this.sortie.keySet()) {
-			src += e + "Quantitee dont qui en ressort " + this.sortie.get(e) + ";\n";
+		for(Couple<Element, Float> c : this.sortie) {
+			src += c.getObjeta() + "Quantitee dont qui en ressort " + c.getObjetb() + ";\n";
 		}
 		src += "\n\n\n";
 		return src;
@@ -181,11 +181,11 @@ public class ChaineProduction {
          */
 	public void effacerPrevision() {
 		for (Production p : this.listeproduction) {
-			for (Element e : this.entree.keySet()) {
-				e.getStock().ajouter(p.getNiveauProduction()*this.entree.get(e));
+			for (Couple<Element, Float> c : this.entree) {
+				c.getObjeta().getStock().ajouter(p.getNiveauProduction()*c.getObjetb());
 			}
-			for(Element e : this.sortie.keySet()) {
-				e.getStock().retirer(p.getNiveauProduction()*this.sortie.get(e));
+			for(Couple<Element, Float> c : this.sortie) {
+				c.getObjeta().getStock().retirer(p.getNiveauProduction()*c.getObjetb());
 			}
 		}
 		this.listeproduction.clear();
@@ -200,8 +200,8 @@ public class ChaineProduction {
 		if(this.niveauActivitee==0) {
 			return false;
 		}
-		for (Element e : this.entree.keySet()) {
-			if(e.getStock().getStock()-this.entree.get(e)*this.niveauActivitee<0) {
+		for (Couple<Element, Float> c : this.entree) {
+			if(c.getObjeta().getStock().getStock()-c.getObjetb()*this.niveauActivitee<0) {
 				return false;
 			}
 		}
@@ -214,11 +214,11 @@ public class ChaineProduction {
          * Crée une Production et l'ajoute à la liste des productions
          */
 	public void produire(){
-		for (Element e : this.entree.keySet()) {
-			e.getStock().retirer(this.entree.get(e)*this.niveauActivitee);
+		for (Couple<Element, Float> c : this.entree) {
+			c.getObjeta().getStock().retirer(c.getObjetb()*this.niveauActivitee);
 		}
-		for (Element e : this.sortie.keySet()) {
-			e.getStock().ajouter(this.sortie.get(e)*this.niveauActivitee);
+		for (Couple<Element, Float> c : this.sortie) {
+			c.getObjeta().getStock().ajouter(c.getObjetb()*this.niveauActivitee);
 		}
 		Calendar cal = this.getFinDeProduction();
 		cal.add(Calendar.MINUTE, this.temps);
@@ -267,11 +267,11 @@ public class ChaineProduction {
         return niveauActivitee;
     }
 
-    public HashMap<Element, Double> getEntree() {
+    public ArrayList<Couple<Element, Float>> getEntree() {
         return entree;
     }
 
-    public HashMap<Element, Double> getSortie() {
+    public ArrayList<Couple<Element, Float>> getSortie() {
         return sortie;
     }
 
@@ -281,15 +281,15 @@ public class ChaineProduction {
     
     public ArrayList<Element> getElementsEnEntree(){
     	ArrayList<Element> listeElem = new ArrayList<Element>();
-    	for (Element e : this.entree.keySet()) {
-    		listeElem.add(e);
+    	for (Couple<Element, Float> c : this.entree) {
+    		listeElem.add(c.getObjeta());
     	}
     	return listeElem;
     }
     public ArrayList<Element> getElementsEnSortie(){
     	ArrayList<Element> listeElem = new ArrayList<Element>();
-    	for (Element e : this.sortie.keySet()) {
-    		listeElem.add(e);
+    	for (Couple<Element, Float> c : this.sortie) {
+    		listeElem.add(c.getObjeta());
     	}
     	return listeElem;
     }

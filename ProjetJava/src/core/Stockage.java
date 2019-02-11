@@ -4,7 +4,7 @@ public class Stockage {
         /**
          * nombre d'element
          */
-	private double quantite;
+	private float quantite;
         /**
          * unite par laquelle on denombre la quantitee
          */
@@ -17,7 +17,7 @@ public class Stockage {
          * @param unitee 
          *  unite par laquelle on denombre la quantitee
          */
-	public Stockage(double quantite, String unitee) {
+	public Stockage(float quantite, String unitee) {
 		this.quantite = quantite;
 		this.unitee = unitee;
 	}
@@ -26,7 +26,7 @@ public class Stockage {
          * 
          * @return la quantitee du stockage
          */
-	public double getStock() {
+	public float getStock() {
 		return this.quantite;
 	}
         
@@ -35,7 +35,7 @@ public class Stockage {
          * @param quantitee
          *  quantite dont on souhaite retirer du stockage
          */
-	public void retirer(double quantitee) {
+	public void retirer(float quantitee) {
 		this.quantite-=quantitee;
 	}
         
@@ -44,7 +44,7 @@ public class Stockage {
          * @param quantitee
          *  quantite dont on souhaite ajouter au stockage
          */
-	public void ajouter(double quantitee) {
+	public void ajouter(float quantitee) {
 		this.quantite+=quantitee;
 	}
         
