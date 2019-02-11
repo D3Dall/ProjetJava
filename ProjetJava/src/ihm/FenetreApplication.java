@@ -11,12 +11,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
+import core.Entreprise;
+
 public class FenetreApplication extends Fenetre{
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menuFichier = new JMenu("Fichier");
 	
 	private JMenuItem itemOuvrir = new JMenuItem("Ouvrir");
-	private JMenuItem itemRemettre0 = new JMenuItem("Split");
+	private JMenuItem itemRemettre0 = new JMenuItem("Remettre à zéro");
+	private JMenuItem prevision = new JMenuItem("Prévision");
 	private JMenuItem itemQuitter = new JMenuItem("Quitter");
 	
 	private JMenuA menu;
@@ -54,10 +57,11 @@ public class FenetreApplication extends Fenetre{
 	}
 	
 	public void constructionMenu() {
-		this.menuFichier.add(itemOuvrir);
-		this.menuFichier.add(itemRemettre0);
-		this.menuFichier.add(itemQuitter);
-		this.menuBar.add(menuFichier);
+		this.menuFichier.add(this.itemOuvrir);
+		this.menuFichier.add(this.itemRemettre0);
+		this.menuFichier.add(this.prevision);
+		this.menuFichier.add(this.itemQuitter);
+		this.menuBar.add(this.menuFichier);
 		this.setJMenuBar(this.menuBar);
 		
 		this.itemOuvrir.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +95,15 @@ public class FenetreApplication extends Fenetre{
 			 */
 			public void actionPerformed(ActionEvent e) {
 								
+			}
+			
+		});
+		this.prevision.addActionListener(new java.awt.event.ActionListener() {
+			/**
+			 * Remise à zero de l'application
+			 */
+			public void actionPerformed(ActionEvent e) {
+				new FenetrePrevision();
 			}
 			
 		});

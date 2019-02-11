@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
 
 import core.ChaineProduction;
 import core.Entreprise;
@@ -17,7 +18,10 @@ public class JChaineProduction extends JPanel{
 	private JScrollPane scrolltab;
 	
 	private JRechercheChaineProduction recpan;
-	private JTableauChaineProduction tableaupanel;
+	
+	private JModeleTabCP modele;
+	private JTable tableau;
+	private JTableau paneltableau;	
 	
 	private JLabel titre;
 	
@@ -26,9 +30,13 @@ public class JChaineProduction extends JPanel{
 	public JChaineProduction(FenetreApplication fenetre) {
 		this.fenetre=fenetre;
 		this.recpan = new JRechercheChaineProduction(this);
-		this.tableaupanel = new JTableauChaineProduction();
+		
+		this.modele = new JModeleTabCP();
+		this.tableau = new JTable(this.modele);
+		this.paneltableau = new JTableau(this.tableau);
+		
 		this.scrollrec = new JScrollPane(this.recpan);
-		this.scrolltab = new JScrollPane(this.tableaupanel);
+		this.scrolltab = new JScrollPane(this.paneltableau);
 		
 		this.setLayout(new BorderLayout());
 		
@@ -39,18 +47,13 @@ public class JChaineProduction extends JPanel{
 	}
 	
 	public void actualiserListeChaineProduction(String code, String nom, int temps) {
-		this.scrolltab.setViewportView(new JTableauChaineProduction(Entreprise.entreprise.chercherChaineDeProduction(code, nom, temps)));		
-		this.scrolltab.repaint();
-		this.scrolltab.revalidate();
-	
-	}
-	
-	public void changerPanel(ChaineProduction cp) {
-		this.fenetre.setPanel(new JPanel());//A changer
+		this.modele.actualiser(Entreprise.entreprise.chercherChaineDeProduction(code, nom, temps));
+		this.repaint();
+		this.revalidate();
 	}
 	
 	public void acceder() {
-		this.fenetre.setPanel(new JDetailChaineProduction(this.tableaupanel.getData(this.tableaupanel.getTableau().getSelectedRow())));
+		this.fenetre.setPanel(new JDetailChaineProduction(this.modele.getChaine(this.tableau.getSelectedRow())));
 	}
 	
 }

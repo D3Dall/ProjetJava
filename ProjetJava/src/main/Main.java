@@ -15,7 +15,9 @@ public class Main {
 		
 		bdElem.Charger();
 		bdCP.Charger();
-		
+		for (ChaineProduction cp : Entreprise.entreprise.getListeChaineProduction()) {
+			System.out.print(cp);
+		}
 		
 		Fenetre fen = new FenetreApplication();
 		

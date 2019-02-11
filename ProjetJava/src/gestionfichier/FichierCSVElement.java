@@ -26,7 +26,7 @@ public class FichierCSVElement extends FichierCSV{
 			String[] attribut = src.split(",");
 			String code = attribut[0];
 			String nom = attribut[1];
-			double stock = Double.parseDouble(attribut[2]);
+			float stock = Float.parseFloat(attribut[2]);
 			String unite = attribut[3];
 			double achat;
 			double vente;
