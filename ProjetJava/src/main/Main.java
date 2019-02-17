@@ -10,11 +10,13 @@ public class Main {
 		
 		BaseDeDonnees bdElem = new FichierCSVElement("ProjetJava/Data/Elements.csv");
 		BaseDeDonnees bdCP = new FichierCSVChaineDeProduction("ProjetJava/Data/Chaines.csv");
+		BaseDeDonnees bdCPers = new FichierCSVPersonnel("ProjetJava/Data/Personnel.csv");
 		
 		Entreprise entreprise = new Entreprise();
 		
-		bdElem.Charger();
-		bdCP.Charger();
+		bdElem.chargerDonnee();
+		bdCP.chargerDonnee();
+		bdCPers.chargerDonnee();
 		for (ChaineProduction cp : Entreprise.entreprise.getListeChaineProduction()) {
 			System.out.print(cp);
 		}

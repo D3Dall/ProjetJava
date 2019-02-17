@@ -40,6 +40,17 @@ public class ChaineProduction {
          */
 	private ArrayList<Production> listeproduction;
 	
+	/**
+	 * Nombre de personne non qualifiee necessaire
+	 */
+	private int nombre_Personne_Non_Qualifiee;
+	
+	/**
+	 * Nombre de personne qualifiee necessaire
+	 */
+	private int nombre_Personne_Qualifiee;
+	
+	
         /**
          * Instancie une chaine de production avec un niveau d'activite
          * @param codeChaineProduction
@@ -51,7 +62,7 @@ public class ChaineProduction {
          * @param temps 
          *  Le temps necesaire à la production
          */
-	public ChaineProduction(String codeChaineProduction, String nom, int niveauActivitee, int temps) {
+	public ChaineProduction(String codeChaineProduction, String nom, int niveauActivitee, int temps, int nbrPersNQ, int nbrPersQ) {
 		this.codeChaineProduction = codeChaineProduction;
 		this.nom = nom;
 		this.niveauActivitee = niveauActivitee;
@@ -59,6 +70,8 @@ public class ChaineProduction {
 		this.entree = new ArrayList<Couple<Element, Float>> ();
 		this.sortie = new ArrayList<Couple<Element, Float>> ();
 		this.listeproduction = new ArrayList<Production>();
+		this.nombre_Personne_Non_Qualifiee =nbrPersNQ;
+		this.nombre_Personne_Qualifiee = nbrPersQ;
 	}
         
         /**
@@ -71,8 +84,8 @@ public class ChaineProduction {
          * @param temps
          * Le temps necessaire à la production
          */
-	public ChaineProduction(String codeChaineProduction, String nom, int temps) {
-		this(codeChaineProduction, nom, 0, temps);
+	public ChaineProduction(String codeChaineProduction, String nom, int temps, int nbrPersNQ, int nbrPersQ) {
+		this(codeChaineProduction, nom, 0, temps, nbrPersNQ, nbrPersQ);
 	}
         
         /**
@@ -199,51 +212,68 @@ public class ChaineProduction {
 	public boolean peutProduire() {
 		if(this.niveauActivitee==0) {
 			return false;
-		}
-		for (Couple<Element, Float> c : this.entree) {
-			if(c.getObjeta().getStock().getStock()-c.getObjetb()*this.niveauActivitee<0) {
-				return false;
+		}else {
+			for (Couple<Element, Float> c : this.entree) {
+				if(c.getObjeta().getStock().getStock()<c.getObjetb()) {
+					return false;
+				}
 			}
 		}
 		return true;
-	}	
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public boolean estOccupe(int temps) {
+		if(this.getFinDeProduction()==-1) {
+			return false;
+		}else if(this.getFinDeProduction()+this.temps>temps) {
+			return true;
+		}else if(this.getFinDeProduction()+this.temps==temps) {
+			this.listeproduction.get(this.listeproduction.size()-1).liberer();
+		}
+		return false;
+	}
 	
         /**
          * Consomme la quantitee des elements marquee dans le dictionnaire des ENTREE.
          * Produit la quantitee des element marquee dans le dictionnaire de SORTIE
          * Crée une Production et l'ajoute à la liste des productions
          */
-	public void produire(){
+	public void produire(int temps, ArrayList<Personnel> listePersonnel){
 		for (Couple<Element, Float> c : this.entree) {
 			c.getObjeta().getStock().retirer(c.getObjetb()*this.niveauActivitee);
 		}
 		for (Couple<Element, Float> c : this.sortie) {
 			c.getObjeta().getStock().ajouter(c.getObjetb()*this.niveauActivitee);
 		}
-		Calendar cal = this.getFinDeProduction();
-		cal.add(Calendar.MINUTE, this.temps);
-		this.listeproduction.add(new Production(this.niveauActivitee, cal));		
-	}
-	
-        /**
-         * Trouve la date de la derniere production de la chaine de production.
-         * @return la date de la derniere production
-         */
-	public Calendar getFinDeProduction() {
-		Calendar cTemp = new GregorianCalendar();
-		for(Production p : this.listeproduction) {
-			if(p.getDateProduction().after(cTemp)) {
-				cTemp = p.getDateProduction();
-			}
+		for (Personnel p : listePersonnel) {
+			p.rendreIndisponible();
+			p.ajouterHeureTravail(this.temps);
 		}
-		return cTemp;
+		this.listeproduction.add(new Production(this.niveauActivitee, temps, listePersonnel));		
 	}
 	
-        /**
-         * Attribue un nouveau niveau d'activite pour la chaine de production.
-         * @param niveauActivitee
-         *  Nouveau niveau d'activite.
-         */
+    /**
+     * Trouve la date de la derniere production de la chaine de production.
+     * @return la date de la derniere production
+     */
+	public int getFinDeProduction() {
+		if(this.listeproduction.size()==0) {
+			System.out.println("premi�re production");
+			return -1;
+		}
+		System.out.println("Derni�re production sur " + this.listeproduction.get(this.listeproduction.size()-1).getHeure());
+		return this.listeproduction.get(this.listeproduction.size()-1).getHeure();
+	}
+	
+    /**
+     * Attribue un nouveau niveau d'activite pour la chaine de production.
+     * @param niveauActivitee
+     *  Nouveau niveau d'activite.
+     */
 	public void attribuerNiveauActivite(int niveauActivitee) {
 		this.niveauActivitee= niveauActivitee;
 	}	
@@ -293,6 +323,14 @@ public class ChaineProduction {
     	}
     	return listeElem;
     }
+
+	public int getNombre_Personne_Non_Qualifiee() {
+		return nombre_Personne_Non_Qualifiee;
+	}
+
+	public int getNombre_Personne_Qualifiee() {
+		return nombre_Personne_Qualifiee;
+	}
         
         
         

@@ -2,7 +2,7 @@ package core;
 
 import java.util.ArrayList;
 
-public class Personnel {
+public abstract class Personnel {
         /**
          * Identifiant d'une personne
          */
@@ -15,23 +15,16 @@ public class Personnel {
          * prenom d'une personne
          */
 	private String prenom;
-        /**
-         * adresse d'une personne
-         */
-	private String adresse;
-        /**
-         * email d'une personne
-         */
-	private String email;
-        /**
-         * numero de telephone d'une personne
-         */
-	private String telephone;
-        /**
-         * liste des qualifications d'une personne.
-         * Cela correspond aux chaines de production auquelles elle peut travailler
-         */
-	private ArrayList<ChaineProduction> listequalifications;
+	
+	/**
+	 * le temps de travail sur une semaine que la personne peut travailler
+	 */
+	private int tempsTravailMAX;
+	
+	private int tempsTravail;
+	
+	private boolean disponible;
+	
         
         /**
          * Instancie un personnel
@@ -48,32 +41,56 @@ public class Personnel {
          * @param telephone 
          *  Numero de telephone d'un personnel
          */
-	public Personnel(String codePersonnel, String nom, String prenom, String adresse, String email, String telephone) {
+	public Personnel(String codePersonnel, String nom, String prenom, int tempsTravailMAX) {
 		this.codePersonnel = codePersonnel;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.adresse = adresse;
-		this.email = email;
-		this.telephone = telephone;
-		this.listequalifications = new ArrayList<ChaineProduction> ();
+		this.tempsTravailMAX = tempsTravailMAX;
+		this.disponible = true;
+		this.tempsTravail = 0;
 	}
 	
-        /**
-         * Ajoute une qualification=chaine de production
-         * @param qualification
-         *  chaine de production/qualification
-         */
-	public void ajouterQualificationPourPersonnel(ChaineProduction qualification) {
-		this.listequalifications.add(qualification);
+	public boolean estdisponible() {
+		return this.disponible;
 	}
-        
-        /**
-         * Retire une qualification=chaine de production
-         * @param qualification
-         *  chaine de production/qualification
-         */
-	public void retirerQualificationPourPersonnel(ChaineProduction qualification) {
-		this.listequalifications.remove(qualification);
+	
+	public void rendreIndisponible() {
+		this.disponible=false;
+	}
+	public void rendreDisponible() {
+		this.disponible=true;
+	}
+	
+	public void ajouterHeureTravail(int temps) {
+		this.tempsTravail+=temps;
+	}
+	
+	public String toString() {
+		return this.nom;
+	}
+
+	public String getCodePersonnel() {
+		return codePersonnel;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public int getTempsTravailMAX() {
+		return tempsTravailMAX;
+	}
+
+	public int getTempsTravail() {
+		return tempsTravail;
+	}
+
+	public boolean isDisponible() {
+		return disponible;
 	}
 	
 	
