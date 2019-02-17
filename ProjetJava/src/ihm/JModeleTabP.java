@@ -6,19 +6,20 @@ import javax.swing.table.AbstractTableModel;
 
 import core.Element;
 import core.Entreprise;
+import core.Personnel;
 
 public class JModeleTabP extends AbstractTableModel {
 	
-	private final ArrayList<Element> listeElement;
-	private final String[] entetes =  {"Code", "Nom", "Prenom", "Qualifié"};
+	private final ArrayList<Personnel> listePersonnel;
+	private final String[] entetes =  {"Code", "Nom", "Prenom","Contrat", "Temps de travail effectif", "%", "Qualifié"};
 	
-	public JModeleTabP (ArrayList<Element> listeElement) {
+	public JModeleTabP (ArrayList<Personnel> listeElement) {
 		super();
-		this.listeElement=listeElement;
+		this.listePersonnel=listeElement;
 	}
 	
 	public JModeleTabP () {
-		this(Entreprise.entreprise.getListeElement());
+		this(Entreprise.entreprise.getListePersonnel());
 	}
 
 	@Override
@@ -30,7 +31,7 @@ public class JModeleTabP extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return this.listeElement.size();
+		return this.listePersonnel.size();
 	}
 
 	@Override
@@ -38,15 +39,23 @@ public class JModeleTabP extends AbstractTableModel {
 		// TODO Auto-generated method stub
 		switch(columnIndex){
         case 0:
-            return this.listeElement.get(rowIndex).getCodeElement();
+            return this.listePersonnel.get(rowIndex).getCodePersonnel();
         case 1:
-            return this.listeElement.get(rowIndex).getNom();
+            return this.listePersonnel.get(rowIndex).getNom();
         case 2:
-            return this.listeElement.get(rowIndex).getStock();
+            return this.listePersonnel.get(rowIndex).getPrenom();
         case 3:
-        	return this.listeElement.get(rowIndex).getPrixAchat();
+        	return this.listePersonnel.get(rowIndex).getTempsTravailMAX();
         case 4:
-        	return this.listeElement.get(rowIndex).getPrixVente();
+        	return this.listePersonnel.get(rowIndex).getTempsTravail();
+        case 5:
+        	return this.listePersonnel.get(rowIndex).getTempsTravail()*100/this.listePersonnel.get(rowIndex).getTempsTravailMAX();
+        case 6:
+        	if(this.listePersonnel.get(rowIndex).getClass().getSimpleName().equals("Personnel_Non_Qualifie")){
+        		return "Oui";
+        	}else {
+        		return "Non";
+        	}
         default:
             return null; //Ne devrait jamais arriver
 		}	

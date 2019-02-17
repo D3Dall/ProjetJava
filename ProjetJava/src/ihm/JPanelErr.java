@@ -1,6 +1,7 @@
 package ihm;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
@@ -18,7 +19,8 @@ public class JPanelErr extends JPanel {
 	public JPanelErr(String name, JFrame frame) {
 		jl = new JLabel(name, JLabel.CENTER);
 		this.frame = frame;
-		bouton = new JButton("My lovely button");
+		bouton = new JButton("OK");
+		bouton.setPreferredSize(new Dimension());
 		bouton.addActionListener(new java.awt.event.ActionListener() {
 
 			@Override

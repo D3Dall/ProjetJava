@@ -14,8 +14,8 @@ public class ProduitsFinis extends Element{
          * @param prixVente 
          *  prix a la vente d'un Produit
          */
-	public ProduitsFinis(String codeElement, String nom, String unitee, double prixAchat, double prixVente) {
-		super(codeElement, nom, unitee, prixAchat, prixVente);
+	public ProduitsFinis(String codeElement, String nom, String unitee, double prixAchat, double prixVente, float demande) {
+		super(codeElement, nom, unitee, prixAchat, prixVente, demande);
 		// TODO Auto-generated constructor stub
 	}
         
@@ -34,8 +34,8 @@ public class ProduitsFinis extends Element{
          * @param prixVente 
          *  prix a la vente d'un Produit
          */
-	public ProduitsFinis(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente) {
-		super(codeElement, nom, unitee, quantite, prixAchat, prixVente);
+	public ProduitsFinis(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente, float demande) {
+		super(codeElement, nom, unitee, quantite, prixAchat, prixVente, demande);
 		// TODO Auto-generated constructor stub
 	}
 	
