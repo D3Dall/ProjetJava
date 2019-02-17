@@ -81,13 +81,14 @@ public class FichierCSVElement extends FichierCSV{
 				}else {
 					vente = Double.parseDouble(attribut[this.index_PrixV]);
 				}
+				float demande = Float.parseFloat(attribut[this.index_Demande]);
 				if (attribut[6].equals("PF")) {
-					Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente));
+					Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente, demande));
 				}else {
-					Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente));
+					Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente, demande));
 				}
 			}catch(Exception e) {
-				
+				System.out.println("brug");
 			}
 			
 		}		

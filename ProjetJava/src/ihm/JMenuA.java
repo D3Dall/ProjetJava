@@ -36,21 +36,19 @@ public class JMenuA extends JPanel{
 		
 		//Gestion des Chaines de production
 		DefaultMutableTreeNode noeudCProduction = new DefaultMutableTreeNode("Gestion des chaînes de production");
-		DefaultMutableTreeNode feuilleCProductionRech = new DefaultMutableTreeNode("Rechercher une chaine de production");
 		DefaultMutableTreeNode feuilleCProductionListe = new DefaultMutableTreeNode("Liste des chaines de production");
-		noeudCProduction.add(feuilleCProductionRech);
 		noeudCProduction.add(feuilleCProductionListe);
 		
-		//Gestion des achats
-		DefaultMutableTreeNode noeudListeAchat = new DefaultMutableTreeNode("Gestion des Achats");
-		DefaultMutableTreeNode feuilleAchatListe = new DefaultMutableTreeNode("Liste des achats");
-		noeudListeAchat.add(feuilleAchatListe);
+		//Gestion du personnel
+		DefaultMutableTreeNode noeudListePersonnel = new DefaultMutableTreeNode("Gestion du Personnel");
+		DefaultMutableTreeNode feuillePersonnelListe = new DefaultMutableTreeNode("Liste du Personnel");
+		noeudListePersonnel.add(feuillePersonnelListe);
 		
 		//Racine
 		DefaultMutableTreeNode racine = new DefaultMutableTreeNode("Entreprise");
 		racine.add(noeudStock);
 		racine.add(noeudCProduction);
-		racine.add(noeudListeAchat);
+		racine.add(noeudListePersonnel);
 		
 		this.arbre = new JTree(racine);
 		
@@ -74,6 +72,9 @@ public class JMenuA extends JPanel{
                     break;
                 case "Liste des chaines de production" :
                 	this.fenetre.setPanel(new JChaineProduction(this.fenetre));
+                	break;
+                case "Liste du Personnel" :
+                	this.fenetre.setPanel(new JPersonnel());
                 	break;
             }
 	        }catch(NullPointerException e){

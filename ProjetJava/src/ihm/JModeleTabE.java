@@ -10,7 +10,7 @@ import core.Entreprise;
 public class JModeleTabE extends AbstractTableModel {
 	
 	private final ArrayList<Element> listeElement;
-	private final String[] entetes =  {"Code", "Nom", "Quantité en stock", "Prix à l'achat", "Prix à la vente"};
+	private final String[] entetes =  {"Code", "Nom", "Quantité en stock", "Demande", "%", "Prix à l'achat", "Prix à la vente"};
 	
 	public JModeleTabE (ArrayList<Element> listeElement) {
 		super();
@@ -43,8 +43,15 @@ public class JModeleTabE extends AbstractTableModel {
         case 2:
             return this.listeElement.get(rowIndex).getStock();
         case 3:
-        	return this.listeElement.get(rowIndex).getPrixAchat();
+        	return this.listeElement.get(rowIndex).getDemande() + this.listeElement.get(rowIndex).getStock().getUnitee();
         case 4:
+        	if(this.listeElement.get(rowIndex).getDemande()==0) {
+        		return "---";
+        	}
+        	return (int)(this.listeElement.get(rowIndex).getStock().getStock()*100/this.listeElement.get(rowIndex).getDemande());
+        case 5:
+        	return this.listeElement.get(rowIndex).getPrixAchat();
+        case 6:
         	return this.listeElement.get(rowIndex).getPrixVente();
         default:
             return null; //Ne devrait jamais arriver

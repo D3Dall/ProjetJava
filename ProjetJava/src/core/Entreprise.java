@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import erreurs.ManqueDeStocksException;
+
 public class Entreprise {
 
 	private ArrayList<Element> listeElements;
@@ -159,7 +161,7 @@ public class Entreprise {
 			return listePersonnel;
 		}
 
-	public void Prevision() {
+	public void Prevision() throws ManqueDeStocksException {
 		ArrayList<Personnel_Qualifie> persQ = new ArrayList<Personnel_Qualifie>();
 		ArrayList<Personnel_Non_Qualifie> persNQ = new ArrayList<Personnel_Non_Qualifie>();
 		
@@ -177,6 +179,7 @@ public class Entreprise {
 		for(ChaineProduction cp : this.listeChaineProduction) {
 			cp.effacerPrevision();
 		}
+		
 		ArrayList<ChaineProduction> chaineProductionActive = this.chainesProductionActive();
 		while(chaineProductionActive.size()>0 && temps<=60) {
 			System.out.println("TEMPS : "+temps);
@@ -222,9 +225,13 @@ public class Entreprise {
 		
 		if (temps<60) {
 			if(chaineProductionActive.size()==0) {
-				System.out.println("PAS ASSEZ DE STOCK OU AUCUNE CHAINE ACTIVE");
+				for (ChaineProduction cp : Entreprise.entreprise.getListeChaineProduction()) {
+					if(cp.getNiveauActivitee()!=0) {
+						throw new ManqueDeStocksException(temps);
+					}
+				}
 			}else {
-				System.out.println("PAS ASSEZ DE PERSONNEL");
+				throw new ManqueDeStocksException(temps);
 			}
 		}
 		System.out.println("fin");

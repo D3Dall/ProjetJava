@@ -24,6 +24,8 @@ public abstract class Element {
          * -1 si ce prix est inconnu
          */
 	private double prixVente;
+	
+	private double demande;
         
         /**
          * Instancie un Element sans quantite
@@ -38,8 +40,8 @@ public abstract class Element {
          * @param prixVente 
          *  prix a la vente de l'element
          */
-	public Element(String codeElement, String nom, String unitee, double prixAchat, double prixVente) {
-		this(codeElement, nom, unitee, 0, prixAchat, prixVente);
+	public Element(String codeElement, String nom, String unitee, double prixAchat, double prixVente, float demande) {
+		this(codeElement, nom, unitee, 0, prixAchat, prixVente, demande);
 	}
         
         /**
@@ -57,15 +59,20 @@ public abstract class Element {
          * @param prixVente 
          *  prix a la vente de l'element
          */
-	public Element(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente) {
+	public Element(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente, float demande) {
 		this.codeElement = codeElement;
 		this.nom = nom;
 		this.stock = new Stockage(quantite, unitee);
 		this.prixAchat = prixAchat;
 		this.prixVente=prixVente;
+		this.demande= demande;
 	}
 	
-        /**
+        public double getDemande() {
+			return demande;
+		}
+
+		/**
          * 
          * @return le stock associe a l'element 
          */
