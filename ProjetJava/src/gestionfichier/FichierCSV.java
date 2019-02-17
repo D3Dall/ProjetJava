@@ -11,20 +11,20 @@ public abstract class FichierCSV implements BaseDeDonnees{
 		this.path=new File(path);
 	}
 
-	public ArrayList<String> Lecture(){
-		ArrayList<String> ligne = new ArrayList<String>();
+	public ArrayList<String> lecture(){
+		ArrayList<String> lignes = new ArrayList<String>();
 		Scanner sc;
 		try {
 			sc = new Scanner(path);
 			sc.nextLine();
 			while (sc.hasNextLine()) {
-				ligne.add(sc.nextLine());
+				lignes.add(sc.nextLine());
 			}	
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			//Erreur fichier vide ou inexistant
 			e.printStackTrace();
 		}	
-		return ligne;
+		return lignes;
 	}
 
 	

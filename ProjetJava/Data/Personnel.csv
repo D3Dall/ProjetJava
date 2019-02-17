@@ -1,2 +1,9 @@
-Code;Nom;Prenom;Adresse;Email;Telephone;Qualification
-A001;Jean;Sasa;134 chemin du poulet;JeanSasa@gmail.com;0623872390;C001,C002
+Code;Nom;Prenom;Qualification;temps
+A001;Jean;Sasa;Y;35
+A002;Samir;Bouharira;N;35
+A003;Lamine;Boutaleb;Y;35
+A006;SSSSSS;SSSSSSSS;Y;35
+A009;bruh;bruh;N;35
+A010;brih;brih;N;15
+A011;Floflo;Floflo;N;35
+A012;Flutte;Tabouret;Y;24

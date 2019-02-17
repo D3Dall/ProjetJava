@@ -1,5 +1,6 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -10,20 +11,19 @@ public class Production {
          */
 	private int niveauProduction;
         /**
-         * Date a laquelle on a produit
+         * Heure a laquelle on a produit
          */
-	private Calendar dateProduction;
-        
-        /**
-         * Instancie une production
-         * @param niveauProduction
-         *  niveau d'activite d'une chaine de production
-         * @param dateProduction 
-         *  date de la production
-         */
-	public Production(int niveauProduction, Calendar dateProduction) {
+	private int heure;
+	private ArrayList<Personnel> listePersonnel;
+	
+	
+	public Production(int niveauProduction, int heure, ArrayList<Personnel> listePersonnel) {
 		this.niveauProduction = niveauProduction;
-		this.dateProduction = dateProduction;
+		this.heure = heure;
+		this.listePersonnel=listePersonnel;
+		for (Personnel p : this.listePersonnel) {
+			p.rendreIndisponible();
+		}
 	}
 	
         /**
@@ -38,9 +38,19 @@ public class Production {
          * 
          * @return la date de la production 
          */
-	public Calendar getDateProduction() {
-		return dateProduction;
+	public int getHeure() {
+		return this.heure;
 	}
-        
+	
+	public void liberer() {
+		for(Personnel p : this.listePersonnel) {
+			p.rendreDisponible();
+		}
+	}
+
+	public ArrayList<Personnel> getListePersonnel() {
+		return listePersonnel;
+	}
+      
         
 }

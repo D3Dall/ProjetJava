@@ -16,6 +16,8 @@ public class Entreprise {
          * liste du personnel de l'entreprise
          */
 	private ArrayList<Personnel> listePersonnel;
+	
+	
         /**
          * premiere entreprise cree
          */
@@ -31,14 +33,13 @@ public class Entreprise {
 		if(Entreprise.entreprise == null) {
 			Entreprise.entreprise = this;
 		}
-		
 	}
 	
-        /**
-         * Ajoute un element dans l'entreprise
-         * @param elem
-         *  element que l'on souhaite ajouter
-         */
+    /**
+     * Ajoute un element dans l'entreprise
+     * @param elem
+     *  element que l'on souhaite ajouter
+     */
 	public void ajouterElementDansEntreprise(Element elem) {
 		this.listeElements.add(elem);
 	}
@@ -153,47 +154,79 @@ public class Entreprise {
 		return chainesProductionActive;
 	}
 	
-        /**
-         * Construit la liste des chaines de production qui sont actives en fonction des chaines de production envoyees(peuvent produire)
-         * @param chaineproduction
-         *  liste de chaine de production
-         * @return la liste des chaines de production qui sont active (niveau d'activite>0 et stock suffisant)
-         */
-    public ArrayList<ChaineProduction> chainesProductionActive(ArrayList<ChaineProduction> chaineproduction){
-		ArrayList<ChaineProduction> chainesProductionActive = new ArrayList<ChaineProduction>();
-		for(ChaineProduction cp: chaineproduction) {
-			if (cp.peutProduire()) {
-				chainesProductionActive.add(cp);
-			}
+
+	public ArrayList<Personnel> getListePersonnel() {
+			return listePersonnel;
 		}
-		return chainesProductionActive;
-	}
-	
-        /**
-         * 
-         */
+
 	public void Prevision() {
-		ArrayList<ChaineProduction> chainesProductionActive = this.chainesProductionActive();
-		while(chainesProductionActive.size()>0) {
-			Iterator it = chainesProductionActive.iterator();
-			ChaineProduction cpfirst = (ChaineProduction)it.next();
-			Calendar calmin = cpfirst.getFinDeProduction();
-			calmin.add(Calendar.MINUTE, cpfirst.getTemps());
-			while(it.hasNext()) {
-				ChaineProduction cp = (ChaineProduction) it.next();
-				Calendar cal = cp.getFinDeProduction();
-				cal.add(Calendar.MINUTE, cp.getTemps());
-				if(calmin.after(cal)) {
-					calmin=cal;
-					cpfirst=cp;
+		ArrayList<Personnel_Qualifie> persQ = new ArrayList<Personnel_Qualifie>();
+		ArrayList<Personnel_Non_Qualifie> persNQ = new ArrayList<Personnel_Non_Qualifie>();
+		
+		for(Personnel pq : this.listePersonnel) {
+			if(pq.getClass().getSimpleName().equals("Personnel_Qualifie")) {
+				persQ.add((Personnel_Qualifie) pq);
+			}else {
+				persNQ.add((Personnel_Non_Qualifie) pq);
+			}	
+		}
+		
+		int temps = 0;
+		System.out.println("COMMENCEMENT");
+		
+		for(ChaineProduction cp : this.listeChaineProduction) {
+			cp.effacerPrevision();
+		}
+		ArrayList<ChaineProduction> chaineProductionActive = this.chainesProductionActive();
+		while(chaineProductionActive.size()>0 && temps<=60) {
+			System.out.println("TEMPS : "+temps);
+			for (ChaineProduction c: chaineProductionActive) {
+				if (!c.estOccupe(temps)) {
+					System.out.println("La chaine " + c.getNom() + " n'est pas occupé : recherche de personnel pour lancement" );
+					ArrayList<Personnel_Non_Qualifie> listePNQ = new ArrayList<Personnel_Non_Qualifie>();
+					ArrayList<Personnel_Qualifie> listePQ = new ArrayList<Personnel_Qualifie>();
+					int  i = 0;
+					System.out.println("Demande de " + c.getNombre_Personne_Non_Qualifiee() + "Personne non qualifié");
+					while (listePNQ.size()<c.getNombre_Personne_Non_Qualifiee() && i < persNQ.size()) {
+						if(persNQ.get(i).estdisponible() && c.getTemps()+persNQ.get(i).getTempsTravail()<persNQ.get(i).getTempsTravailMAX()) {
+							System.out.println("Personnel non qualifié : " +persNQ.get(i) + " disponible : ajout");
+							listePNQ.add(persNQ.get(i));
+							System.out.println("Il reste " + (c.getNombre_Personne_Non_Qualifiee()-listePNQ.size()) + " personnes non qualifie a trouver");
+						}
+						i++;
+					}
+					i=0;
+					System.out.println("Demande de " + c.getNombre_Personne_Qualifiee() + "Personne qualifié");
+					while (listePQ.size()<c.getNombre_Personne_Qualifiee() && i < persQ.size()) {
+						if(persQ.get(i).estdisponible() && c.getTemps()+persQ.get(i).getTempsTravail()<persQ.get(i).getTempsTravailMAX()) {
+							System.out.println("Personnel qualifié : " +persQ.get(i) + " disponible : ajout");
+							listePQ.add(persQ.get(i));
+							System.out.println("Il reste " + (c.getNombre_Personne_Qualifiee()-listePQ.size()) + " personnes non qualifie a trouver");
+						}
+						i++;
+					}
+					if(listePNQ.size()==c.getNombre_Personne_Non_Qualifiee() && listePQ.size()==c.getNombre_Personne_Qualifiee()) {
+						System.out.println("Lancement de la chaine de production");
+						ArrayList<Personnel> listePersonnelPourChaine = new ArrayList<Personnel>();
+						listePersonnelPourChaine.addAll(listePQ);
+						listePersonnelPourChaine.addAll(listePNQ);
+						c.produire(temps, listePersonnelPourChaine);
+					}else {
+						System.out.println("pas assez de personnel");
+					}
 				}
 			}
-			cpfirst.produire();
-			chainesProductionActive=this.chainesProductionActive();			
-		}	
+			chaineProductionActive=this.chainesProductionActive();
+			temps++;
+		}
+		
+		if (temps<60) {
+			if(chaineProductionActive.size()==0) {
+				System.out.println("PAS ASSEZ DE STOCK OU AUCUNE CHAINE ACTIVE");
+			}else {
+				System.out.println("PAS ASSEZ DE PERSONNEL");
+			}
+		}
+		System.out.println("fin");
 	}
-	
-	
-	
-	
 }

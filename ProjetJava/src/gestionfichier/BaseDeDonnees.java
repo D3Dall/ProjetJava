@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public interface BaseDeDonnees {
 
-	public ArrayList<String> Lecture();
+	public ArrayList<String> lecture();
 	
-	public abstract void Charger();
+	public abstract void chargerDonnee();
 	
-	public void Ecriture();
+	public void ecriture();
 	
 }

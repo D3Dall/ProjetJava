@@ -58,7 +58,7 @@ public class JDetailChaineProduction extends JPanel{
             }
         });
 		
-		this.tempsL = new JLabel (this.chaine.getTemps()+"");		
+		this.tempsL = new JLabel (this.chaine.getTemps()+" heures");		
 		
 		this.tabEntree = new JTableauTitre("Element en entrée", new JTableau(new JModeleTabCPEE(this.chaine.getEntree())));
 		this.tabSortie = new JTableauTitre("Element en sortie", new JTableau(new JModeleTabCPES(this.chaine.getSortie())));
