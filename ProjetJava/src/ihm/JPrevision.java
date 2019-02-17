@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import core.Entreprise;
+import core.Prevision;
 import erreurs.ManqueDeStocksException;
 
 public class JPrevision extends JPanel{	
@@ -35,7 +36,7 @@ public class JPrevision extends JPanel{
 	public JPrevision() {
 		
 		try {
-			Entreprise.entreprise.Prevision();
+			Prevision.Prevision(Entreprise.entreprise);
 		} catch (Exception e) {
 			new FenetreErr(e.getMessage());
 		}

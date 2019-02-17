@@ -65,7 +65,7 @@ public class ChaineProduction {
 	public ChaineProduction(String codeChaineProduction, String nom, int niveauActivitee, int temps, int nbrPersNQ, int nbrPersQ) {
 		this.codeChaineProduction = codeChaineProduction;
 		this.nom = nom;
-		this.niveauActivitee = niveauActivitee;
+		this.niveauActivitee = 1;
 		this.temps = temps;
 		this.entree = new ArrayList<Couple<Element, Float>> ();
 		this.sortie = new ArrayList<Couple<Element, Float>> ();
@@ -209,14 +209,24 @@ public class ChaineProduction {
          * se trouvant dans ses dictionnaires en ENTREE.
          * @return vrai si les stocks permettent la production, faux sinon.
          */
-	public boolean peutProduire() {
+	public boolean estActive() {
 		if(this.niveauActivitee==0) {
 			return false;
-		}else {
-			for (Couple<Element, Float> c : this.entree) {
-				if(c.getObjeta().getStock().getStock()<c.getObjetb()) {
-					return false;
-				}
+		}
+		return true;
+	}
+	
+	public boolean aLeTemps(int temps) {
+		if(this.temps+temps>=60) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean stockSuffisant() {
+		for (Couple<Element, Float> c : this.entree) {
+			if(c.getObjeta().getStock().getStock()<c.getObjetb()) {
+				return false;
 			}
 		}
 		return true;
@@ -231,8 +241,6 @@ public class ChaineProduction {
 			return false;
 		}else if(this.getFinDeProduction()+this.temps>temps) {
 			return true;
-		}else if(this.getFinDeProduction()+this.temps==temps) {
-			this.listeproduction.get(this.listeproduction.size()-1).liberer();
 		}
 		return false;
 	}
@@ -246,15 +254,24 @@ public class ChaineProduction {
 		for (Couple<Element, Float> c : this.entree) {
 			c.getObjeta().getStock().retirer(c.getObjetb()*this.niveauActivitee);
 		}
-		for (Couple<Element, Float> c : this.sortie) {
-			c.getObjeta().getStock().ajouter(c.getObjetb()*this.niveauActivitee);
-		}
 		for (Personnel p : listePersonnel) {
 			p.rendreIndisponible();
 			p.ajouterHeureTravail(this.temps);
 		}
 		this.listeproduction.add(new Production(this.niveauActivitee, temps, listePersonnel));		
 	}
+	
+	public void ActualiserProduction(int temps) {
+		System.out.println("liblibe" + this.nom);
+		if(this.getFinDeProduction()+this.temps==temps && this.getFinDeProduction()!=-1) {
+			System.out.println("liberation");
+			this.listeproduction.get(this.listeproduction.size()-1).liberer();
+			for (Couple<Element, Float> c : this.sortie) {
+				c.getObjeta().getStock().ajouter(c.getObjetb()*this.niveauActivitee);
+			}
+		}
+	}
+	
 	
     /**
      * Trouve la date de la derniere production de la chaine de production.
