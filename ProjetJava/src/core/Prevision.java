@@ -8,6 +8,7 @@ import erreurs.ManqueDeStocksException;
 
 public class Prevision {
 	
+	
 	private static ArrayList<ChaineProduction> chainesProductionActive(Entreprise entreprise){
 		ArrayList<ChaineProduction> chainesProductionActive = new ArrayList<ChaineProduction>();
 		for(ChaineProduction cp: entreprise.getListeChaineProduction()) {
@@ -115,6 +116,7 @@ public class Prevision {
 		return productionEnCours;
 	}
 	
+	
 	public static void Prevision(Entreprise entreprise) throws ManqueDeStocksException, ManqueDePersonnelsException, ChainesProductionInactifException {
 		ArrayList<Personnel_Qualifie> persQ = new ArrayList<Personnel_Qualifie>();
 		ArrayList<Personnel_Non_Qualifie> persNQ = new ArrayList<Personnel_Non_Qualifie>();
@@ -136,7 +138,6 @@ public class Prevision {
 		if(chaineProductionActive.size()==0) {
 			throw new ChainesProductionInactifException(); // Erreur propagée
 		}
-		
 		
 		do{
 			System.out.println("TEMPS : "+temps);

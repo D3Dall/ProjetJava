@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import core.Entreprise;
-import core.MatieresPremieres;
 import core.Personnel_Non_Qualifie;
 import core.Personnel_Qualifie;
 

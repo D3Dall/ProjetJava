@@ -7,9 +7,6 @@ import java.util.Scanner;
 import core.ChaineProduction;
 import core.Element;
 import core.Entreprise;
-import core.MatieresPremieres;
-import core.ProduitsFinis;
-import core.Stockage;
 
 public class FichierCSVChaineDeProduction extends FichierCSV{
 	private int index_Code;

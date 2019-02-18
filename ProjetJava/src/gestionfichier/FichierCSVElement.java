@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 import core.Element;
 import core.Entreprise;
-import core.MatieresPremieres;
-import core.ProduitsFinis;
 
 public class FichierCSVElement extends FichierCSV{
 	private int index_Code;
@@ -82,11 +80,7 @@ public class FichierCSVElement extends FichierCSV{
 					vente = Double.parseDouble(attribut[this.index_PrixV]);
 				}
 				float demande = Float.parseFloat(attribut[this.index_Demande]);
-				if (attribut[6].equals("PF")) {
-					Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente, demande));
-				}else {
-					Entreprise.entreprise.ajouterElementDansEntreprise(new MatieresPremieres(code, nom, unite, stock, achat, vente, demande));
-				}
+				Entreprise.entreprise.ajouterElementDansEntreprise(new Element(code, nom, unite, stock, achat, vente, demande));
 			}catch(Exception e) {
 				System.out.println("brug");
 			}

@@ -1,6 +1,6 @@
 package core;
 
-public abstract class Element {
+public class Element {
         /**
          * L'identifiant d'un element.
          */

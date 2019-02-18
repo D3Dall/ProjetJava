@@ -156,7 +156,7 @@ public class ChaineProduction {
          *  L'element que l'on veut retirer au dictionnaire.
          *  
          */
-	public void retirerElementPourDictionnaireDeProductionEnSortie(ProduitsFinis elem) {
+	public void retirerElementPourDictionnaireDeProductionEnSortie(Element elem) {
 		this.entree.remove(elem);
 	}
 	

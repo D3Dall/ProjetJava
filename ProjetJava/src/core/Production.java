@@ -5,18 +5,35 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Production {
+	
         /**
          * Niveau d'activite de la chaine de production.
-         * Cela correspond a la performance de la chaine de production
+         * Cela correspond à la performance de la chaine de production.
          */
 	private int niveauProduction;
+	
         /**
-         * Heure a laquelle on a produit
+         * l'heure à laquelle on a produit.
          */
 	private int heure;
+	
+		/**
+		 * Liste des personnels reliés à la production.
+		 */
 	private ArrayList<Personnel> listePersonnel;
 	
-	
+		/**
+		 * Créé une production
+		 * 
+		 * @param niveauProduction
+		 *  Le niveau de production de la chaine lors de la production.
+		 *  
+		 * @param heure
+		 *  L'heure à laquel la production a débuté.
+		 *  
+		 * @param listePersonnel
+		 *  La liste des personnels reliée au fonctionnement de la chaine de production.
+		 */
 	public Production(int niveauProduction, int heure, ArrayList<Personnel> listePersonnel) {
 		this.niveauProduction = niveauProduction;
 		this.heure = heure;
@@ -26,28 +43,25 @@ public class Production {
 		}
 	}
 	
-        /**
-         * 
-         * @return le niveau de production lors de la production 
-         */
-	public int getNiveauProduction() {
-		return this.niveauProduction;
-	}
-
-        /**
-         * 
-         * @return la date de la production 
-         */
-	public int getHeure() {
-		return this.heure;
-	}
-	
+	/**
+	 * Libère tout les personnels reliés à la production.
+	 */
 	public void liberer() {
 		for(Personnel p : this.listePersonnel) {
 			p.rendreDisponible();
 		}
 	}
+	
+	//GETTERS
+	
+	public int getNiveauProduction() {
+		return this.niveauProduction;
+	}
 
+	public int getHeure() {
+		return this.heure;
+	}
+	
 	public ArrayList<Personnel> getListePersonnel() {
 		return listePersonnel;
 	}
