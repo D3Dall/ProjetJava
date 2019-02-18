@@ -8,6 +8,5 @@ public interface BaseDeDonnees {
 	
 	public abstract void chargerDonnee();
 	
-	public void ecriture();
 	
 }

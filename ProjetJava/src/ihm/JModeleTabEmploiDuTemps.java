@@ -22,7 +22,7 @@ public class JModeleTabEmploiDuTemps extends AbstractTableModel {
 		}
 		for(int i = 0; i<entreprise.getListePersonnel().size(); i++) {
 			Personnel pers = entreprise.getListePersonnel().get(i);
-			this.datas[i][0] = pers.getPrenom() + " " + pers.getPrenom();
+			this.datas[i][0] = pers.getCodePersonnel() + " " + pers.getNom() + " " + pers.getPrenom();
 			for(ChaineProduction cp : entreprise.getListeChaineProduction()) {
 				for(Production p : cp.getListeproduction()) {
 					if(p.getListePersonnel().contains(pers)) {
@@ -54,4 +54,23 @@ public class JModeleTabEmploiDuTemps extends AbstractTableModel {
       return this.entetes[col]; 
    }
 	
+	public String toString() {
+		String retour = "";
+		for(String s : this.entetes) {
+			retour += s +  ";";
+		}
+		retour += "\n";
+		for(int i = 0; i < this.datas.length; i++) {
+			for(String s : this.datas[i]) {
+				if(s == null) {
+					retour += ";";
+				}
+				else {
+					retour += s + ";";
+				}
+			}
+			retour += "\n";
+		}
+		return retour;
+	}
 }

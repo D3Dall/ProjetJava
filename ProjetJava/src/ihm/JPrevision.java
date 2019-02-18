@@ -3,6 +3,7 @@ package ihm;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,6 +12,7 @@ import javax.swing.JTable;
 import core.Entreprise;
 import core.Prevision;
 import erreurs.ManqueDeStocksException;
+import gestionfichier.FichierCSVEmploiDuTemps;
 
 public class JPrevision extends JPanel{	
 	
@@ -70,6 +72,7 @@ public class JPrevision extends JPanel{
 		this.contenue.add(this.resumeElement);
 		this.contenue.add(this.resumeEmploiDuTemps);
 		this.contenue.add(this.resumePersonnel);
+		
 	}
 	
 	
