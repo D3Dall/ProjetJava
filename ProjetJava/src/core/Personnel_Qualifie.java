@@ -23,6 +23,9 @@ public class Personnel_Qualifie extends Personnel {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
+	public String toString() {
+		String retour = super.toString(); 
+		retour += "Qualification : Qualifié\n\n";  
+		return retour;
+	}
 }

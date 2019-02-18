@@ -88,7 +88,13 @@ public abstract class Personnel {
 	}
 	
 	public String toString() {
-		return this.nom;
+		String retour = "";
+		retour += "Personnel - Code Personnel : " + this.codePersonnel + "\n";
+		retour += "Nom du Personnel : " + this.nom + "\n";
+		retour += "Prenom du Personnel : " + this.prenom + "\n";
+		retour += "Nombre d'heure de travail dans la semaine maximales inscritent dans le contrat : " + this.tempsTravailMAX + "\n";
+		retour += "Nombre d'heure de travail effectives dans la semaine : " + this.tempsTravail + "\n";
+		return retour;
 	}
 
 	// GETTERS
@@ -115,7 +121,6 @@ public abstract class Personnel {
 	public boolean isDisponible() {
 		return disponible;
 	}
-	
 	
 	
 

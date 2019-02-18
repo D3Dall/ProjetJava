@@ -22,7 +22,11 @@ public class Personnel_Non_Qualifie extends Personnel{
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public String toString() {
+		String retour = super.toString(); 
+		retour += "Qualification : Non qualifié\n\n";  
+		return retour;
+	}
 	
 	
 	
