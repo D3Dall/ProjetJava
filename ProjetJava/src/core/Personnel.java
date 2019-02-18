@@ -4,42 +4,47 @@ import java.util.ArrayList;
 
 public abstract class Personnel {
         /**
-         * Identifiant d'une personne
+         * L'identifiant d'une personne
          */
 	private String codePersonnel;
+	
         /**
-         * nom d'une personne
+         * Le nom d'une personne
          */
 	private String nom;
+	
         /**
-         * prenom d'une personne
+         * Le prenom d'une personne
          */
 	private String prenom;
 	
-	/**
-	 * le temps de travail sur une semaine que la personne peut travailler
-	 */
+		/**
+		 * Le temps de travail sur une semaine que la personne peut travailler (inscrit dans le contrat).
+		 */
 	private int tempsTravailMAX;
 	
+		/**
+		 * Le temps de travail sur une semaine que la personne a travaillé.
+		 */
 	private int tempsTravail;
 	
 	private boolean disponible;
 	
         
         /**
-         * Instancie un personnel
+         * Créé un Personnel disponible.
+         * 
          * @param codePersonnel
-         *  Identifiant d'un personnel
+         *  L'identifiant d'un personnel.
+         *  
          * @param nom
-         *  Nom d'un personnel
+         *  Le nom d'un personnel.
+         *  
          * @param prenom
-         *  Prenom d'un personnel
-         * @param adresse
-         *  Adresse d'un personnel
-         * @param email
-         *  Adresse email d'un personnel
-         * @param telephone 
-         *  Numero de telephone d'un personnel
+         *  Le prénom d'un personnel.
+         *  
+         *  @param tempsTravailMAX
+         *   Le temps de travail maximum du personnel par semaine (inscrit dans le contrat).
          */
 	public Personnel(String codePersonnel, String nom, String prenom, int tempsTravailMAX) {
 		this.codePersonnel = codePersonnel;
@@ -50,17 +55,34 @@ public abstract class Personnel {
 		this.tempsTravail = 0;
 	}
 	
+	/**
+	 * Voit si le personnel est disponible, s'il n'est pas occupé à une chaine de production
+	 * @return
+	 * Vrai si le personnel est disponible, faux sinon.
+	 */
 	public boolean estdisponible() {
 		return this.disponible;
 	}
 	
+	/**
+	 * Rend le personnel indisponible.
+	 */
 	public void rendreIndisponible() {
 		this.disponible=false;
 	}
+	
+	/**
+	 * Rend le personnel disponible.
+	 */
 	public void rendreDisponible() {
 		this.disponible=true;
 	}
 	
+	/**
+	 * Ajoute du temps de travail au personnel
+	 * @param temps
+	 * L'heure de la production
+	 */
 	public void ajouterHeureTravail(int temps) {
 		this.tempsTravail+=temps;
 	}
@@ -69,6 +91,7 @@ public abstract class Personnel {
 		return this.nom;
 	}
 
+	// GETTERS
 	public String getCodePersonnel() {
 		return codePersonnel;
 	}

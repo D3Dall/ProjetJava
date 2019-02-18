@@ -3,17 +3,23 @@ package core;
 public class MatieresPremieres extends Element{
     
         /**
-         * Instancie une Matiere Premiere
+         * Créé une matière première sans une quantité.
+         * 
          * @param codeElement
-         *  Identifiant d'une Matiere Premiere
+         * L'identifiant d'une Matiere Premiere.
+         * 
          * @param nom
-         *  nom d'une Matiere Premiere
+         * Le nom d'une Matiere Premiere.
+         * 
          * @param unitee
-         *  unite que l'on utilise pour dÃ©nombrer la Matiere Premiere
+         * L'unite que l'on utilise pour dénombrer la Matiere Premiere.
+         * 
          * @param prixAchat
-         *  prix a l'achat de la Matiere Premiere
+         * Le prix à l'achat de la Matiere Premiere.
+         * 
          * @param prixVente 
-         *  prix a la vente de la Matiere Premiere
+         * Le prix à la vente de la Matiere Premiere.
+         * 
          */
 	public MatieresPremieres(String codeElement, String nom, String unitee, double prixAchat, double prixVente, float demande) {
 		super(codeElement, nom, unitee, prixAchat, prixVente, demande);
@@ -21,19 +27,26 @@ public class MatieresPremieres extends Element{
 	}
         
         /**
+         * Créé une matière première avec une quantité.
          * 
          * @param codeElement
-         *  Identifiant d'une Matiere Premiere
+         *  L'identifiant d'une Matiere Premiere.
+         *  
          * @param nom
-         *  nom d'une Matiere Premiere
+         *  Le nom d'une Matiere Premiere.
+         *  
          * @param unitee
-         *  unite que l'on utilise pour dÃ©nombrer la Matiere Premiere
+         *  L'unite que l'on utilise pour dénombrer la Matiere Premiere.
+         *  
          * @param quantite
-         *  quantite associe a la Matiere Premiere
+         *  La quantité associée à la Matiere Premiere.
+         *  
          * @param prixAchat
-         *  prix a l'achat de la Matiere Premiere
+         *  Le prix à l'achat de la Matiere Premiere.
+         *  
          * @param prixVente 
-         *  prix a la vente de la Matiere Premiere 
+         *  Le prix à la vente de la Matiere Premiere .
+         *  
          */
 	public MatieresPremieres(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente, float demande) {
 		super(codeElement, nom, unitee, quantite, prixAchat, prixVente, demande);
