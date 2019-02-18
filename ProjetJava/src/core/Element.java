@@ -107,8 +107,23 @@ public abstract class Element {
 	
 	
 	public String toString() {
-		return this.codeElement + " - " + this.nom + "\nprix d'achat : " + this.prixAchat
-				+ "\nprix de vente :" +this.prixVente + "\n" + this.stock + "\n" ; 
+		String retour = "";
+		retour += this.codeElement + " - " + this.nom;
+		if(this.prixAchat > 0) {
+			retour += "\nprix d'achat : " + this.prixAchat;
+		}
+		else {
+			retour += "\nprix d'achat : NA";
+		}
+
+		if(this.prixVente > 0) {
+			retour += "\nprix de vente : " +this.prixVente + "\n";
+		}
+		else {
+			retour += "\nprix de vente : NA\n";
+		}
+		retour += this.stock + "\n\n";
+		return retour;
 	}
 
 	public String getCodeElement() {

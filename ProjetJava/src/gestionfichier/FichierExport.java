@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import core.ChaineProduction;
+import core.Entreprise;
 
 public class FichierExport {
 	protected String path;
@@ -17,8 +18,12 @@ public class FichierExport {
 	}
 	
 	public void Ecriture(ChaineProduction cp) throws IOException {
-		WriteFile writer = new WriteFile(this.path, true);
+		WriteFile writer = new WriteFile(this.path);
 		writer.writeToFile(cp.toString());
 	}
 
+	public void Ecriture() throws IOException {
+		WriteFile writer = new WriteFile(this.path);
+		writer.writeToFile(Entreprise.entreprise.toString());
+	}
 }

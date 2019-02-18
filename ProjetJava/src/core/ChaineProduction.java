@@ -190,13 +190,13 @@ public class ChaineProduction {
          */
 	public String toString() {
 		String src = this.codeChaineProduction + " - " + this.nom + " - " + this.temps;
-		src += "\nElement en Entrï¿½e :\n";
+		src += "\nElement en Entrée :\n";
 		for (Couple<Element, Float> c : this.entree) {
-			src += c.getObjeta() + "Quantitee dont on a besoin " + c.getObjetb();
+			src += c.getObjeta().getCodeElement() + " " + c.getObjeta().getNom() + " Quantitée dont on a besoin " + c.getObjetb();
 		}
 		src += "\nElement en Sortie :\n";
 		for(Couple<Element, Float> c : this.sortie) {
-			src += c.getObjeta() + "Quantitee dont qui en ressort " + c.getObjetb() + ";\n";
+			src += c.getObjeta().getCodeElement() + " " + c.getObjeta().getNom() + " Quantitée qui en ressort " + c.getObjetb() + ";\n";
 		}
 		src += "\n\n\n";
 		return src;

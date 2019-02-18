@@ -144,4 +144,18 @@ public class Entreprise {
 	public ArrayList<Personnel> getListePersonnel() {
 		return listePersonnel;
 	}
+	
+	public String toString() {
+		String retour = "";
+		for(Element e : this.listeElements) {
+			retour += e.toString();
+		}
+		for(ChaineProduction cp : this.listeChaineProduction) {
+			retour += cp.toString();
+		}
+		for(Personnel p : this.listePersonnel) {
+			retour += p.toString();
+		}
+		return retour;
+	}
 }

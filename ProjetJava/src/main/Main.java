@@ -17,15 +17,13 @@ public class Main {
 		FichierExport fe = new FichierExport("ProjetJava/Data/Export.txt");
 		
 		Entreprise entreprise = new Entreprise();
-		
 		bdElem.chargerDonnee();
 		bdCP.chargerDonnee();
 		bdCPers.chargerDonnee();
 		for (ChaineProduction cp : Entreprise.entreprise.getListeChaineProduction()) {
 			System.out.print(cp);
-			fe.Ecriture(cp);
 		}
-		
+		fe.Ecriture();
 		Fenetre fen = new FenetreApplication();
 	}
 
