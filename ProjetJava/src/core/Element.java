@@ -2,12 +2,12 @@ package core;
 
 public abstract class Element {
         /**
-         * L'identifiant d'un element
+         * L'identifiant d'un element.
          */
 	private String codeElement;
 	
         /**
-         * Le nom d'un element
+         * Le nom d'un element.
          */
 	private String nom;
 	
@@ -26,44 +26,59 @@ public abstract class Element {
 	private double prixAchat;
 	
         /**
-         * Prix de l'element a la vente
-         * -1 si ce prix est inconnu
+         * Prix de l'element a la vente.
+         * -1 si ce prix est inconnu.
          */
 	private double prixVente;
 	
+		/**
+		 * Le quantité de l'élément demandé.
+		 */
 	private double demande;
         
         /**
-         * Instancie un Element sans quantite
+         * Créé un Element sans quantité
+         * 
          * @param codeElement
-         *  Identifiant d'un element
+         *  L'dentifiant d'un element.
+         *  
          * @param nom
-         *  nom d'un element
+         *  Le nom d'un element.
+         *  
          * @param unitee
-         *  unite que l'on utilise pour dÃ©nombrer l'element
+         *  L'unite que l'on utilise pour dénombrer l'element.
+         *  
          * @param prixAchat
-         *  prix a l'achat de l'element
+         *  Le prix a l'achat de l'element.
+         *  
          * @param prixVente 
-         *  prix a la vente de l'element
+         *  Le prix a la vente de l'element.
          */
 	public Element(String codeElement, String nom, String unitee, double prixAchat, double prixVente, float demande) {
 		this(codeElement, nom, unitee, 0, prixAchat, prixVente, demande);
 	}
         
         /**
-         * Instancie un Element avec une quantite
+         * Créé un element avec une quantité.
+         * 
          * @param codeElement
-         *  Identifiant d'un element
+         * L'identifiant d'un element.
+         * 
          * @param nom
-         *  nom d'un element
+         * Le nom d'un element.
+         *  
          * @param unitee
-         *  unite que l'on utilise pour dÃ©nombrer l'element
+         * L'unite que l'on utilise pour dénombrer l'element.
+         *  
          * @param quantite
-         *  quantite associe a l'element
+         * La quantite associe a l'element.
+         *  
          * @param prixAchat
-         *  prix a l'achat de l'element
+         * Le prix à l'achat de l'element.
+         *  
          * @param prixVente 
-         *  prix a la vente de l'element
+         * Le prix à la vente de l'element.
+         *  
          */
 	public Element(String codeElement, String nom, String unitee, float quantite, double prixAchat, double prixVente, float demande) {
 		this.codeElement = codeElement;
@@ -74,23 +89,15 @@ public abstract class Element {
 		this.demande= demande;
 	}
 	
-        public double getDemande() {
-			return demande;
-		}
-
 		/**
-         * 
-         * @return le stock associe a l'element 
-         */
-	public Stockage getStock() {
-		return this.stock;
-	}
-	
-        /**
-         * Verifie si le code envoye correspond au code (identifiant) de l'element
-         * @param code
-         * @return vrai si le code correspond, faux sinon
-         */
+		 * Verifie si le code envoyé correspond au code (identifiant) de l'element.
+		 * 
+		 * @param code
+		 *  Le code de la chaine que l'on cherche.
+		 *  
+		 * @return 
+		 *  Vrai si le code correspond, faux sinon.
+		 */
 	public boolean CodeCorrect(String code) {
 		if(this.codeElement.equals(code)) {
 			return true;
@@ -98,10 +105,7 @@ public abstract class Element {
 		return false;
 	}
 	
-        /**
-         * Transforme l'objet en une chaine de caracteres
-         * @return l'objet sous forme de chaine de caracteres
-         */
+	
 	public String toString() {
 		return this.codeElement + " - " + this.nom + "\nprix d'achat : " + this.prixAchat
 				+ "\nprix de vente :" +this.prixVente + "\n" + this.stock + "\n" ; 
@@ -123,7 +127,13 @@ public abstract class Element {
 		return prixVente;
 	}
 
+	public double getDemande() {
+		return demande;
+	}
 	
+	public Stockage getStock() {
+		return this.stock;
+	}
 	
 	
 	
