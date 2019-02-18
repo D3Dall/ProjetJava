@@ -88,8 +88,6 @@ public class FichierCSVElement extends FichierCSV{
 		}		
 	}
 
-	@Override
-	public void ecriture() {
-	}
+
 
 }

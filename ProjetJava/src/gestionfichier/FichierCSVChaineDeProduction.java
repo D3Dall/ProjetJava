@@ -112,11 +112,7 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 		}	
 	}
 
-	@Override
-	public void ecriture() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 

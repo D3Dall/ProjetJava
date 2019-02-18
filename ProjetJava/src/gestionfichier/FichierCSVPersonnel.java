@@ -30,9 +30,10 @@ public class FichierCSVPersonnel extends FichierCSV{
 				for (int i = 0; i< ligne.length; i++) {
 					if(ligne[i].toLowerCase().contains("code")) {
 						this.index_Code = i;
-					}else if (ligne[i].toLowerCase().contains("nom")) {
+					}else if (ligne[i].toLowerCase().equals("nom")) {
+						System.out.println("indice " +i);
 						this.index_Nom = i;
-					}else if(ligne[i].toLowerCase().contains("prenom")) {
+					}else if(ligne[i].toLowerCase().equals("prenom")) {
 						this.index_Prenom = i;
 					}else if(ligne[i].toLowerCase().contains("qualification")) {
 						this.index_Qualification = i;
@@ -67,10 +68,6 @@ public class FichierCSVPersonnel extends FichierCSV{
 				Entreprise.entreprise.ajouterPersonnelDansEntrepise(new Personnel_Non_Qualifie(code, nom, prenom, temps));
 			}
 		}		
-	}
-
-	@Override
-	public void ecriture() {
 	}
 
 	
