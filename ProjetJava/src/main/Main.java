@@ -14,7 +14,7 @@ public class Main {
 		BaseDeDonnees bdCP = new FichierCSVChaineDeProduction("ProjetJava/Data/Chaines.csv");
 		BaseDeDonnees bdCPers = new FichierCSVPersonnel("ProjetJava/Data/Personnel.csv");
 
-		FichierExport fe = new FichierExport("C:\\Users\\zamourak\\git\\ProjetJava\\ProjetJava\\Data\\Export.txt");
+		FichierExport fe = new FichierExport("ProjetJava/Data/Export.txt");
 		
 		Entreprise entreprise = new Entreprise();
 		
@@ -27,7 +27,6 @@ public class Main {
 		}
 		
 		Fenetre fen = new FenetreApplication();
-		
 	}
 
 }

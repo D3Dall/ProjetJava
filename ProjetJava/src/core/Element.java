@@ -2,23 +2,29 @@ package core;
 
 public abstract class Element {
         /**
-         * Identifiant d'un element
+         * L'identifiant d'un element
          */
 	private String codeElement;
+	
         /**
-         * nom d'un element
+         * Le nom d'un element
          */
 	private String nom;
+	
         /**
-         * Stock d'un element.
-         * ReprÃ©sente la quantitee de l'element et son unite.
+         * Le stock d'un element.
+         * Représente la quantité de l'element et son unité de mesure.
+         * 
          */
 	private Stockage stock;
+	
         /**
-         * Prix de l'element a l'achat.
-         * -1 si ce prix est inconnu
+         * Le prix de l'element a l'achat.
+         * -1 si ce prix est inconnu.
+         * 
          */
 	private double prixAchat;
+	
         /**
          * Prix de l'element a la vente
          * -1 si ce prix est inconnu

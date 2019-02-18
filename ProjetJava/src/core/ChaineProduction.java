@@ -6,61 +6,77 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class ChaineProduction {
+	
         /**
-         * Identifiant de la chaine de production (UNIQUE)
+         * L'identifiant de la chaine de production (UNIQUE)
          */
 	private String codeChaineProduction;
+	
         /**
-         * Nom de la chaine de production
+         * Le nom de la chaine de production
          */
 	private String nom;
+	
         /**
-         * Niveau d'activite de la chaine de production.
-         * Cela correspond a la performance de la chaine de production
+         * Le niveau d'activite de la chaine de production.
+         * 
          */
 	private int niveauActivitee;
+	
         /**
          * temps que met la chaine de production pour produire
          */
 	private int temps;
 	
         /**
-         * Dictionnaire des Elements en ENTREE
-         * Cela correspond a la quantitee des elements qui seront consommes pour une production
+         * Liste des couples des Elements en ENTREE
+         * chaque couple correspond a la quantitee des elements qui seront consommes pour une production
          */
 	private ArrayList<Couple<Element, Float>> entree;
+	
         /**
-         * Dictionnaire des Elements en SORTIE
-         * Cela correspond a la quantitee des elements qui seront produits pour une production
+         * Liste des couples des Elements en SORTIE
+         * chaque couple correspond a la quantitee des elements qui seront consommés pour une production au niveau d'activité 1
          */
 	private ArrayList<Couple<Element, Float>> sortie;
-	
-        /**
-         * Liste des productions faites par la chaine de production
-         */
+		
+		/**
+		 * Liste des productions faites par l'entreprise
+		 */
 	private ArrayList<Production> listeproduction;
 	
-	/**
-	 * Nombre de personne non qualifiee necessaire
-	 */
+		/**
+		 * Nombre de personne(s) non qualifie(e)(s) necessaire(s)
+		 */
 	private int nombre_Personne_Non_Qualifiee;
 	
-	/**
-	 * Nombre de personne qualifiee necessaire
-	 */
+		/**
+		 * Nombre de personne(s) qualifie(e)(s) necessaire(s)
+		 */
 	private int nombre_Personne_Qualifiee;
 	
 	
         /**
-         * Instancie une chaine de production avec un niveau d'activite
-         * @param codeChaineProduction
-         *  Le code identifiant la chaine de production
-         * @param nom
-         *  Le nom de la chaine de production
-         * @param niveauActivitee
-         *  Le niveau d'activite de la production
+         * Crée une chaine de production avec une liste de production vide
+         * 
+         * @param codeChaineProduction 
+         * L'identifiant de la chaine de production (UNIQUE).
+         * 
+         * @param nom 
+         * Le nom de la chaine de production.
+         * 
+         * @param niveauActivitee 
+         * Le niveau d'activité de la chaine de production.
+         * 
          * @param temps 
-         *  Le temps necesaire Ã  la production
+         * Le temps que met la chaine pour faire une production.
+         * 
+         * @param nbrPersNQ 
+         * Le nombre de personne(s) non qualifié(e)(s) necessaire(s).
+         * 
+         * @param nbrPersQ 
+         * Le nombre de personne(s) qualifié(e)(s) necessaire(s).
+         * 
          */
 	public ChaineProduction(String codeChaineProduction, String nom, int niveauActivitee, int temps, int nbrPersNQ, int nbrPersQ) {
 		this.codeChaineProduction = codeChaineProduction;
@@ -75,92 +91,90 @@ public class ChaineProduction {
 	}
         
         /**
-         * Instancie une chaine de production sans un niveau d'activite
-         * (niveauActivitee = 0)
-         * @param codeChaineProduction
-         * Le code identifiant la chaine de production
-         * @param nom
-         * Le nom de la chaine de production
+         * Crée une chaine de production avec une liste de production vide.
+         * 
+         * @param codeChaineProduction 
+         * L'identifiant de la chaine de production (UNIQUE).
+         * 
+         * @param nom 
+         * Le nom de la chaine de production.
+         * 
          * @param temps
-         * Le temps necessaire Ã  la production
+         * Le temps que met la chaine pour faire une production.
+         * 
+         * @param nbrPersNQ 
+         * Le nombre de personne(s) non qualifié(e)(s) necessaire(s).
+         * 
+         * @param nbrPersQ 
+         * Le nombre de personne(s) qualifié(e)(s) necessaire(s).
          */
 	public ChaineProduction(String codeChaineProduction, String nom, int temps, int nbrPersNQ, int nbrPersQ) {
 		this(codeChaineProduction, nom, 0, temps, nbrPersNQ, nbrPersQ);
 	}
         
         /**
-         * Ajoute un element dans le dictionnaire de production en ENTREE
-         * @param elem
-         *  L'element que l'on veut ajouter au dictionnaire
+         * Ajoute un element dans le dictionnaire de production en ENTREE (entree).
+         * 
+         * @param elem 
+         * L'element à ajouter au dictionnaire.
+         *  
          * @param quantitee 
-         *  La quantite associÃ© Ã  l'element que l'on ajoute
+         * La quantite associée.
          */
 	public void ajouterElementPourDictionnaireDeProductionEnEntree(Element elem, float quantitee) {
 		this.entree.add(new Couple(elem, quantitee));
 	}
         
         /**
-         * Ajoute un element dans le dictionnaire de production en SORTIE
-         * @param elem
-         *  L'element que l'on veut ajouter au dictionnaire
+         * Ajoute un element dans le dictionnaire de production en SORTIE.
+         * 
+         * @param elem 
+         * L'element à ajouter au dictionnaire.
+         * 
          * @param quantitee 
-         *  La quantite associÃ© Ã  l'element que l'on ajoute
+         * La quantite associée.
+         * 
          */
 	public void ajouterElementPourDictionnaireDeProductionEnSortie(Element elem, float quantitee) {
 		this.sortie.add(new Couple(elem, quantitee));
 	}
         
         /**
-         * Retire un element dans le dictionnaire de production en ENTREE
+         * Retire un element dans le dictionnaire de production en ENTREE.
+         * 
          * @param elem
-         *  L'element que l'on veut retirer au dictionnaire
+         *  L'element que l'on veut retirer au dictionnaire.
          */
 	public void retirerElementPourDictionnaireDeProductionEnEntree(Element elem) {
 		this.entree.remove(elem);
 	}
         
         /**
-         * Retire un element dans le dictionnaire de production en SORTIE
+         * Retire un element dans le dictionnaire de production en SORTIE.
+         * 
          * @param elem
-         *  L'element que l'on veut retirer au dictionnaire
+         *  L'element que l'on veut retirer au dictionnaire.
+         *  
          */
 	public void retirerElementPourDictionnaireDeProductionEnSortie(ProduitsFinis elem) {
 		this.entree.remove(elem);
 	}
-        
-        /**
-         * Modifie la quantite d'un element dans le dictionnaire de production en ENTREE
-         * @param elem
-         *  L'element concerne par la modification de quantite
-         * @param quantitee 
-         *  La nouvelle quantite que l'on veut integrer
-         */
-	public void modifierElementPourDictionnaireDeProductionEnEntree(Element elem, float quantitee) {
-		this.ajouterElementPourDictionnaireDeProductionEnEntree(elem, quantitee);
-	}
-        
-        /**
-         * Modifie la quantite d'un element dans le dictionnaire de production en SORTIE
-         * @param elem
-         *  L'element concerne par la modification de quantite
-         * @param quantitee 
-         *  La nouvelle quantite que l'on veut integrer
-         */
-	public void modifierElementPourDictionnaireDeProductionEnSortie(Element elem, float quantitee) {
-		this.ajouterElementPourDictionnaireDeProductionEnSortie(elem, quantitee);
-	}
 	
 	
         /**
-         * Retourne Vrai ou Faux selon la correspondance entre les paramÃ¨tres non null et diffÃ©rent de 0 envoyÃ©
-         * et la chaine de production. Les paramÃ¨tres null ou 0 ne sont pas pris en compte.
+         * Retourne Vrai ou Faux selon la correspondance entre les paramètres envoyés et les attribut de la chaine de production.
+         *  Les paramètres null ou 0 ne sont pas pris en compte dans la correspondance.
+         *  
          * @param code
-         *  code de la probable chaine de production
+         * Le code de la probable chaine de production.
+         * 
          * @param nom
-         *  nom de la probable chaine de production
+         *  Le nom de la probable chaine de production.
+         *  
          * @param temps
-         *  temps de la probable chaine de production
-         * @return vrai s'il y a correspondance, faux sinon
+         *  Le temps de la probable chaine de production.
+         *  
+         * @return vrai s'il y a correspondance, faux sinon.
          */
     public boolean isChaineDeProduction(String code, String nom, int temps) {
         if(this.codeChaineProduction.contains(code) && this.nom.contains(nom) && (temps==this.temps || temps==0)){
@@ -170,7 +184,8 @@ public class ChaineProduction {
 	}
         
         /**
-         * Decrit l'objet sous forme d'une chaine de caracteres
+         * Decrit l'objet sous forme d'une chaine de caracteres.
+         * 
          * @return l'objet sous forme d'une chaine de caracteres
          */
 	public String toString() {
@@ -189,8 +204,10 @@ public class ChaineProduction {
 	}
 	
         /**
-         * Efface les previsions. Efface donc tout les productions de la liste des productions.
-         * Reintegre les stocks Ã  l'etat originel.
+         * Efface les previsions.
+         * Efface donc toutes les productions de la liste des productions.
+         * 
+         * Reintègre les stocks à l'etat de départ.
          */
 	public void effacerPrevision() {
 		for (Production p : this.listeproduction) {
@@ -205,9 +222,11 @@ public class ChaineProduction {
 	}
 	
         /**
-         * Voit si la chaine de production peut produire en fonction des stocks des elements
-         * se trouvant dans ses dictionnaires en ENTREE.
-         * @return vrai si les stocks permettent la production, faux sinon.
+         * Voit si la chaine de production et en activitée ou non.
+         * 
+         * @return
+         * vrai si les stocks permettent la production, faux sinon.
+         * 
          */
 	public boolean estActive() {
 		if(this.niveauActivitee==0) {
@@ -216,6 +235,15 @@ public class ChaineProduction {
 		return true;
 	}
 	
+	/**
+	 * Voit si la chaine de production à le temps de produire avant la fin de la semaine de production (60h)
+	 * 
+	 * @param temps
+	 * L'heure présente
+	 * 
+	 * @return
+	 * Vrai si la chaine à le temps de produire, faux sinon.
+	 */
 	public boolean aLeTemps(int temps) {
 		if(this.temps+temps>=60) {
 			return false;
@@ -223,6 +251,12 @@ public class ChaineProduction {
 		return true;
 	}
 	
+	/**
+	 * Voit si le stock est suffisant pour la production de la chaine de production
+	 * 
+	 * @return
+	 * Vrai si pour tout élément dans le dictionnaire en entree, le stock est suffisant, faux sinon.
+	 */
 	public boolean stockSuffisant() {
 		for (Couple<Element, Float> c : this.entree) {
 			if(c.getObjeta().getStock().getStock()<c.getObjetb()) {
@@ -234,6 +268,13 @@ public class ChaineProduction {
 	
 	
 	/**
+	 * Voit si la chaine de production est occupé. (Si elle est en train de produire)
+	 * 
+	 * @param temps
+	 * L'heure de la production
+	 * 
+	 * @return
+	 * Vrai si elle est en train de produire, faux sinon
 	 * 
 	 */
 	public boolean estOccupe(int temps) {
@@ -246,9 +287,13 @@ public class ChaineProduction {
 	}
 	
         /**
-         * Consomme la quantitee des elements marquee dans le dictionnaire des ENTREE.
-         * Produit la quantitee des element marquee dans le dictionnaire de SORTIE
-         * CrÃ©e une Production et l'ajoute Ã  la liste des productions
+         * 
+         * Consomme toute les quantités des éléments se trouvant dans le dictionnaire en entrée.
+         * Créé une Production et l'ajoute à la liste des productions
+         * 
+         * @param listePersonnel
+         * La liste du pesonnel dont on a besoin pour démarrer la chaine de production
+         * 
          */
 	public void produire(int temps, ArrayList<Personnel> listePersonnel){
 		for (Couple<Element, Float> c : this.entree) {
@@ -261,6 +306,13 @@ public class ChaineProduction {
 		this.listeproduction.add(new Production(this.niveauActivitee, temps, listePersonnel));		
 	}
 	
+		/**
+		 * Detecte la fin d'activité de la production en cours de la chaine de production.
+		 * Si la dernière production en cours se termine, alors on libère les personnels occupés à cette chaine
+		 *  
+		 * @param temps
+		 * L'heure de la production
+		 */
 	public void ActualiserProduction(int temps) {
 		System.out.println("liblibe" + this.nom);
 		if(this.getFinDeProduction()+this.temps==temps && this.getFinDeProduction()!=-1) {
@@ -274,8 +326,10 @@ public class ChaineProduction {
 	
 	
     /**
-     * Trouve la date de la derniere production de la chaine de production.
-     * @return la date de la derniere production
+     * Trouve l'heure du début de la derniere production de la chaine de production. -1 s'il n'y a pas eu de production.
+     * 
+     * @return 
+     * La date de la derniere production. -1 s'il n'y a pas eu de production.
      */
 	public int getFinDeProduction() {
 		if(this.listeproduction.size()==0) {
@@ -288,44 +342,22 @@ public class ChaineProduction {
 	
     /**
      * Attribue un nouveau niveau d'activite pour la chaine de production.
+     * 
      * @param niveauActivitee
      *  Nouveau niveau d'activite.
+     *  
      */
 	public void attribuerNiveauActivite(int niveauActivitee) {
 		this.niveauActivitee= niveauActivitee;
 	}	
-	
-    /**
-     * @return Le temps d'une production de la chaine de production
-     */
-	public int getTemps() {
-		return this.temps;
-	}
-
-    public String getCodeChaineProduction() {
-        return codeChaineProduction;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public int getNiveauActivitee() {
-        return niveauActivitee;
-    }
-
-    public ArrayList<Couple<Element, Float>> getEntree() {
-        return entree;
-    }
-
-    public ArrayList<Couple<Element, Float>> getSortie() {
-        return sortie;
-    }
-
-    public ArrayList<Production> getListeproduction() {
-        return listeproduction;
-    }
     
+	
+		/**
+		 * Renvoi la liste des elements présents dans le dictionnaire en entrée.
+		 * 
+		 * @return
+		 * La liste des elements présents dans le dictionnaire en entrée.
+		 */
     public ArrayList<Element> getElementsEnEntree(){
     	ArrayList<Element> listeElem = new ArrayList<Element>();
     	for (Couple<Element, Float> c : this.entree) {
@@ -333,6 +365,13 @@ public class ChaineProduction {
     	}
     	return listeElem;
     }
+    
+	    /**
+		 * Renvoi la liste des elements présents dans le dictionnaire en sortie.
+		 * 
+		 * @return
+		 * La liste des elements présents dans le dictionnaire en sortie.
+		 */
     public ArrayList<Element> getElementsEnSortie(){
     	ArrayList<Element> listeElem = new ArrayList<Element>();
     	for (Couple<Element, Float> c : this.sortie) {
@@ -341,6 +380,11 @@ public class ChaineProduction {
     	return listeElem;
     }
 
+    
+    
+    
+    //Accesseurs
+    
 	public int getNombre_Personne_Non_Qualifiee() {
 		return nombre_Personne_Non_Qualifiee;
 	}
@@ -349,7 +393,33 @@ public class ChaineProduction {
 		return nombre_Personne_Qualifiee;
 	}
         
-        
+	public int getTemps() {
+		return this.temps;
+	}
+
+    public String getCodeChaineProduction() {
+        return this.codeChaineProduction;
+    }
+
+    public String getNom() {
+        return this.nom;
+    }
+
+    public int getNiveauActivitee() {
+        return this.niveauActivitee;
+    }
+
+    public ArrayList<Couple<Element, Float>> getEntree() {
+        return this.entree;
+    }
+
+    public ArrayList<Couple<Element, Float>> getSortie() {
+        return this.sortie;
+    }
+
+    public ArrayList<Production> getListeproduction() {
+        return this.listeproduction;
+    }  
         
         
 }
