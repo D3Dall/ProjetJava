@@ -23,7 +23,7 @@ public class Main {
 		for (ChaineProduction cp : Entreprise.entreprise.getListeChaineProduction()) {
 			System.out.print(cp);
 		}
-		fe.Ecriture();
+		fe.ecriture();
 		Fenetre fen = new FenetreApplication();
 	}
 

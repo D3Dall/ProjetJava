@@ -17,12 +17,12 @@ public class FichierExport {
 		this.path = path;
 	}
 	
-	public void Ecriture(ChaineProduction cp) throws IOException {
+	public void ecriture(ChaineProduction cp) throws IOException {
 		WriteFile writer = new WriteFile(this.path);
 		writer.writeToFile(cp.toString());
 	}
 
-	public void Ecriture() throws IOException {
+	public void ecriture() throws IOException {
 		WriteFile writer = new WriteFile(this.path);
 		writer.writeToFile(Entreprise.entreprise.toString());
 	}
