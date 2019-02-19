@@ -10,6 +10,9 @@ public abstract class FichierCSV implements BaseDeDonnees{
 	public FichierCSV(String path) {
 		this.path=new File(path);
 	}
+	public FichierCSV(File path) {
+		this.path=path;
+	}
 
 	public ArrayList<String> lecture(){
 		ArrayList<String> lignes = new ArrayList<String>();

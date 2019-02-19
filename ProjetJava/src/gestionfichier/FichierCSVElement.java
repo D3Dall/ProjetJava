@@ -1,5 +1,6 @@
 package gestionfichier;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,6 +18,12 @@ public class FichierCSVElement extends FichierCSV{
 	private int index_Demande;
 	
 	public FichierCSVElement(String path) {
+		super(path);
+		this.chargerEntete();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public FichierCSVElement(File path) {
 		super(path);
 		this.chargerEntete();
 		// TODO Auto-generated constructor stub
