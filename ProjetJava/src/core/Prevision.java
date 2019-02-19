@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 
 import erreurs.ChainesProductionInactifException;
+import erreurs.EntrepriseManquanteException;
 import erreurs.ManqueDePersonnelsException;
 import erreurs.ManqueDeStocksException;
 
@@ -20,9 +21,7 @@ public class Prevision {
 	}
 	
 	private static void effacerPrevision(Entreprise entreprise) {
-		for(ChaineProduction cp : entreprise.getListeChaineProduction()) {
-			cp.effacerPrevision();
-		}
+		entreprise.remettreA0();
 	}
 
 	private static void separationPersonnelParType(ArrayList<Personnel_Qualifie> persQ, ArrayList<Personnel_Non_Qualifie> persNQ, ArrayList<Personnel> pers) {
@@ -117,7 +116,11 @@ public class Prevision {
 	}
 	
 	
-	public static void Prevision(Entreprise entreprise) throws ManqueDeStocksException, ManqueDePersonnelsException, ChainesProductionInactifException {
+	public static void Prevision(Entreprise entreprise) throws ManqueDeStocksException, ManqueDePersonnelsException, ChainesProductionInactifException, EntrepriseManquanteException {
+		if(entreprise == null) {
+			throw new EntrepriseManquanteException();
+		}
+		
 		ArrayList<Personnel_Qualifie> persQ = new ArrayList<Personnel_Qualifie>();
 		ArrayList<Personnel_Non_Qualifie> persNQ = new ArrayList<Personnel_Non_Qualifie>();
 		

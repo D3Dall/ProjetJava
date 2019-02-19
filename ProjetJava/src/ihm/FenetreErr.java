@@ -8,7 +8,6 @@ public class FenetreErr extends Fenetre{
 		
 		super((int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth()/4, (int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight()/4, "ERREUR");
 		jperr = new JPanelErr(erreur, this);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.add(jperr);
 		this.setVisible(true);
 	}

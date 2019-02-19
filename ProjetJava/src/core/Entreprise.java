@@ -145,6 +145,19 @@ public class Entreprise {
 		return listePersonnel;
 	}
 	
+	
+	/**
+	 *
+	 */
+	public void remettreA0() {
+		for (Personnel p : this.listePersonnel) {
+			p.remettreA0();
+		}
+		for(ChaineProduction c : this.listeChaineProduction) {
+			c.effacerPrevision();
+		}
+	}
+	
 	public String toString() {
 		String retour = "";
 		for(Element e : this.listeElements) {

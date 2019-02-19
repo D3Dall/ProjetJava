@@ -9,6 +9,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 
+import core.Entreprise;
 import erreurs.FichierCSVManquant;
 import gestionfichier.FichierCSVEmploiDuTemps;
 import gestionfichier.FichierExport;
@@ -25,7 +26,6 @@ public class FenetrePrevision extends Fenetre {
 	
 	public FenetrePrevision() {
 		super("Prévision");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.scroll = new JScrollPane();
 		this.panelprevision = new JPrevision();
@@ -50,7 +50,7 @@ public class FenetrePrevision extends Fenetre {
     					FichierExport fe = new FichierExport(dir.getPath()+ "/compte_rendu.txt");
     					fe.ecriture();
     					FichierCSVEmploiDuTemps fEDT = new  FichierCSVEmploiDuTemps(dir.getPath() + "/emploi_du_temps.csv");
-    					fEDT.ecriture();
+    					fEDT.ecriture(panelprevision.getModeleTabEDT());
     				}catch(Exception e) {
     					new FenetreErr(e.getMessage() + " " + e);
     				}

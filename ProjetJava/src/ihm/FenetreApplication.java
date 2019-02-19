@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 import core.Entreprise;
+import core.Prevision;
 import erreurs.FichierCSVManquant;
 import gestionfichier.FichierCSVChaineDeProduction;
 import gestionfichier.FichierCSVElement;
@@ -106,7 +107,7 @@ public class FenetreApplication extends Fenetre{
 			 * Remise à zero de l'application
 			 */
 			public void actionPerformed(ActionEvent e) {
-								
+				Entreprise.entreprise.remettreA0();
 			}
 			
 		});
@@ -115,7 +116,13 @@ public class FenetreApplication extends Fenetre{
 			 * Remise à zero de l'application
 			 */
 			public void actionPerformed(ActionEvent e) {
-				new FenetrePrevision();
+				try {
+					Prevision.Prevision(Entreprise.entreprise);
+					new FenetrePrevision();
+				} catch (Exception erreur) {
+					new FenetreErr(erreur.getMessage());
+				}
+				
 			}
 			
 		});

@@ -96,6 +96,13 @@ public abstract class Personnel {
 		retour += "Nombre d'heure de travail effectives dans la semaine : " + this.tempsTravail + "\n";
 		return retour;
 	}
+	
+	/**
+	 * Remet à 0 le temps de travail d'un personnel
+	 */
+	public void remettreA0() {
+		this.tempsTravail=0;
+	}
 
 	// GETTERS
 	public String getCodePersonnel() {

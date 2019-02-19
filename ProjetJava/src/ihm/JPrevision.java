@@ -36,13 +36,7 @@ public class JPrevision extends JPanel{
 	private JTableauTitre resumePersonnel;
 	
 	public JPrevision() {
-		
-		try {
-			Prevision.Prevision(Entreprise.entreprise);
-		} catch (Exception e) {
-			new FenetreErr(e.getMessage());
-		}
-				
+					
 		this.setLayout(new BorderLayout());
 		this.titre = new JLabel("Résultat de la prévision", JLabel.CENTER);
 		this.add(titre, BorderLayout.NORTH);
@@ -74,7 +68,14 @@ public class JPrevision extends JPanel{
 		this.contenue.add(this.resumePersonnel);
 		
 	}
-	
+
+	public JModeleTabEmploiDuTemps getModeleTabEDT() {
+		return modeleTabEDT;
+	}
+
+	public void setModeleTabEDT(JModeleTabEmploiDuTemps modeleTabEDT) {
+		this.modeleTabEDT = modeleTabEDT;
+	}
 	
 	
 	
