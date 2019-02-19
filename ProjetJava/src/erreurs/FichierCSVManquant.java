@@ -31,7 +31,7 @@ public class FichierCSVManquant extends Exception {
 	}
 	
 	public String toString() {
-		return "Fichier csv manquant : \n elements : "+this.elementOK() + "\nchaines :" +this.chaineProductionOK()+"\nPersonnel : "+this.personnelOK();
+		return "Fichier csv manquant : \n elements : "+this.elementOK() + "\n chaines :" +this.chaineProductionOK()+"\n Personnel : "+this.personnelOK();
 	}
 	
 	

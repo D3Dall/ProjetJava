@@ -1,5 +1,6 @@
 package gestionfichier;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,6 +21,12 @@ public class FichierCSVPersonnel extends FichierCSV{
 		this.chargerEntete();
 		// TODO Auto-generated constructor stub
 	}
+	public FichierCSVPersonnel(File path) {
+		super(path);
+		this.chargerEntete();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 	private void chargerEntete() {
 		Scanner sc;

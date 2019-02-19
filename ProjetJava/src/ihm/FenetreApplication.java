@@ -12,6 +12,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 import core.Entreprise;
+import erreurs.FichierCSVManquant;
+import gestionfichier.FichierCSVChaineDeProduction;
+import gestionfichier.FichierCSVElement;
+import gestionfichier.FichierCSVPersonnel;
+import gestionfichier.Import;
 
 public class FenetreApplication extends Fenetre{
 	private JMenuBar menuBar = new JMenuBar();
@@ -70,11 +75,18 @@ public class FenetreApplication extends Fenetre{
 			 */
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	JFileChooser dialogue = new JFileChooser(new File("."));
-    			File fichier;
+    			dialogue.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            	int  ret = dialogue.showOpenDialog(null);    
     			
-    			if(dialogue.showOpenDialog(null)==JFileChooser.APPROVE_OPTION){
-    				fichier = dialogue.getSelectedFile();
-    				System.out.println(fichier);
+    			if(ret == JFileChooser.APPROVE_OPTION) {
+    				File dir = dialogue.getSelectedFile();
+    				
+    				try {
+    					Import.Importer(dir);
+    				}catch(FichierCSVManquant e) {
+    					new FenetreErr(e.getMessage() + " " + e);
+    				}
+    			
     			}
             }
         });

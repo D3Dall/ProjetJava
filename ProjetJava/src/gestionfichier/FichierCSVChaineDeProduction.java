@@ -1,5 +1,6 @@
 package gestionfichier;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,6 +22,13 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 		super(path);
 		this.chargerEntete();
 	}
+	
+	public FichierCSVChaineDeProduction(File path) {
+		super(path);
+		this.chargerEntete();
+	}
+	
+	
 	
 	private void chargerEntete() {
 		Scanner sc;
