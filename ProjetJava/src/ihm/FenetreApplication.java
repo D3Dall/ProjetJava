@@ -13,6 +13,7 @@ import javax.swing.JSplitPane;
 
 import core.Entreprise;
 import core.Prevision;
+import erreurs.EntrepriseManquanteException;
 import erreurs.FichierCSVManquant;
 import gestionfichier.FichierCSVChaineDeProduction;
 import gestionfichier.FichierCSVElement;
@@ -119,8 +120,11 @@ public class FenetreApplication extends Fenetre{
 				try {
 					Prevision.Prevision(Entreprise.entreprise);
 					new FenetrePrevision();
-				} catch (Exception erreur) {
+				} catch (EntrepriseManquanteException erreur) {
 					new FenetreErr(erreur.getMessage());
+				} catch (Exception erreur1) {
+					new FenetrePrevision();
+					new FenetreErr(erreur1.getMessage());				
 				}
 				
 			}
