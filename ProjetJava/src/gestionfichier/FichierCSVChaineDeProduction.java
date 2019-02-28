@@ -69,13 +69,9 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 			String code = attribut[this.index_Code];
 			String nom = attribut[this.index_Nom];
 			try {
-				System.out.println("1");
 				int temps = Integer.parseInt(attribut[this.index_Temps]);
-				System.out.println("2");
 				int personnelNQ = Integer.parseInt(attribut[this.index_PersNQ]);
-				System.out.println("3");
 				int personnelQ = Integer.parseInt(attribut[this.index_PersQ]);
-				System.out.println("4");
 				ChaineProduction cp = new ChaineProduction(code, nom, temps, personnelNQ, personnelQ);
 				ChargerContenuSortie(attribut[this.index_Sortie], cp);
 				ChargerContenuEntree(attribut[this.index_Entree], cp);
@@ -89,9 +85,6 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 	
 	private void ChargerContenuSortie(String attribut, ChaineProduction pr) {
 		String[] elemsortie = attribut.split(",");
-		if(elemsortie.length%2==0) {
-			//Erreur format fichier
-		}
 		for (int i = 0 ; i < elemsortie.length; i+=2) {
 			Element el = Entreprise.entreprise.rechercherElement(elemsortie[i].substring(elemsortie[i].indexOf('(')+1));
 			try {
@@ -106,9 +99,6 @@ public class FichierCSVChaineDeProduction extends FichierCSV{
 	
 	private void ChargerContenuEntree(String attribut, ChaineProduction pr) {
 		String[] elemsortie = attribut.split(",");
-		if(elemsortie.length%2==0) {
-			//Erreur format fichier
-		}
 		for (int i = 0 ; i < elemsortie.length; i+=2) {
 			Element el = Entreprise.entreprise.rechercherElement(elemsortie[i].substring(elemsortie[i].indexOf('(')+1));
 			try {
