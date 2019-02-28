@@ -15,6 +15,7 @@ public class FichierCSVPersonnel extends FichierCSV{
 	private int index_Prenom;
 	private int index_Temps;
 	private int index_Qualification;
+	private int index_Repos;
 	
 	public FichierCSVPersonnel(String path) {
 		super(path);
@@ -46,6 +47,8 @@ public class FichierCSVPersonnel extends FichierCSV{
 						this.index_Qualification = i;
 					}else if(ligne[i].toLowerCase().contains("temps")){
 						this.index_Temps = i;
+					}else if(ligne[i].toLowerCase().contains("repos")) {
+						this.index_Repos= i;
 					}
 				}				
 			}else {
@@ -69,12 +72,34 @@ public class FichierCSVPersonnel extends FichierCSV{
 			String prenom = attribut[this.index_Prenom];
 			int temps = Integer.parseInt(attribut[this.index_Temps]);
 			String qualification = attribut[this.index_Qualification];
+			ArrayList<Integer> repos = this.constructionRepos(attribut[this.index_Repos]);
 			if (qualification.equals("Y")) {
-				Entreprise.entreprise.ajouterPersonnelDansEntrepise(new Personnel_Qualifie(code, nom, prenom, temps));
+				Entreprise.entreprise.ajouterPersonnelDansEntrepise(new Personnel_Qualifie(code, nom, prenom, temps, repos));
 			}else {
-				Entreprise.entreprise.ajouterPersonnelDansEntrepise(new Personnel_Non_Qualifie(code, nom, prenom, temps));
+				Entreprise.entreprise.ajouterPersonnelDansEntrepise(new Personnel_Non_Qualifie(code, nom, prenom, temps, repos));
 			}
 		}		
+	}
+	
+	
+	private ArrayList<Integer> constructionRepos(String src){
+		ArrayList<Integer> repos = new ArrayList<Integer>();
+		String[] tab = src.split(",");
+		
+		for (int i = 0 ; i < tab.length; i+=2) {
+			try {
+				int jourdeb = Integer.parseInt(tab[i].substring(tab[i].indexOf('(')+1, tab[i].length()));
+				int jourfin = Integer.parseInt(tab[i+1].substring(0, tab[i+1].indexOf(')')));
+				for(int j = jourdeb ; j <= jourfin ; j++) {
+					repos.add(j);
+				}
+				
+			}catch(Exception e) {
+				//erreur format
+			}
+		}
+		return repos;		
+		
 	}
 
 	

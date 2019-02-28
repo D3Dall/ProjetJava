@@ -30,6 +30,8 @@ public abstract class Personnel {
 	
 	private boolean disponible;
 	
+	private ArrayList<Integer> repos;
+	
         
         /**
          * Créé un Personnel disponible.
@@ -45,14 +47,19 @@ public abstract class Personnel {
          *  
          *  @param tempsTravailMAX
          *   Le temps de travail maximum du personnel par semaine (inscrit dans le contrat).
+         *   
+         *   @param repos
+         *    Les heures de repos du personnel
+         *  
          */
-	public Personnel(String codePersonnel, String nom, String prenom, int tempsTravailMAX) {
+	public Personnel(String codePersonnel, String nom, String prenom, int tempsTravailMAX, ArrayList<Integer> repos) {
 		this.codePersonnel = codePersonnel;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.tempsTravailMAX = tempsTravailMAX;
 		this.disponible = true;
 		this.tempsTravail = 0;
+		this.repos=repos;
 	}
 	
 	/**
