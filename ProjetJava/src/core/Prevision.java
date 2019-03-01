@@ -41,12 +41,12 @@ public class Prevision {
 	}
 	
 	
-	private static ArrayList<Personnel_Qualifie> recherchePersonnelQualifie(ArrayList<Personnel_Qualifie> persQ, ChaineProduction c){
+	private static ArrayList<Personnel_Qualifie> recherchePersonnelQualifie(int temps, ArrayList<Personnel_Qualifie> persQ, ChaineProduction c){
 		ArrayList<Personnel_Qualifie> listePQ = new ArrayList<Personnel_Qualifie>();
 		int i=0;
 		System.out.println("Demande de " + c.getNombre_Personne_Qualifiee() + "Personne qualifié");
 		while (listePQ.size()<c.getNombre_Personne_Qualifiee() && i < persQ.size()) {
-			if(persQ.get(i).estdisponible() && c.getTemps()+persQ.get(i).getTempsTravail()<persQ.get(i).getTempsTravailMAX()) {
+			if(persQ.get(i).estdisponible() && c.getTemps()+persQ.get(i).getTempsTravail()<persQ.get(i).getTempsTravailMAX() && !persQ.get(i).estEnRepos(temps, temps + c.getTemps())) {
 				System.out.println("Personnel qualifié : " +persQ.get(i) + " disponible : ajout");
 				listePQ.add(persQ.get(i));
 				System.out.println("Il reste " + (c.getNombre_Personne_Qualifiee()-listePQ.size()) + " personnes qualifie a trouver");
@@ -58,13 +58,13 @@ public class Prevision {
 		
 	}
 	
-	private static ArrayList<Personnel> recherchePersonnelNonQualifie(ArrayList<Personnel_Non_Qualifie> persNQ, ArrayList<Personnel_Qualifie> persQ, ChaineProduction c){
+	private static ArrayList<Personnel> recherchePersonnelNonQualifie(int temps, ArrayList<Personnel_Non_Qualifie> persNQ, ArrayList<Personnel_Qualifie> persQ, ChaineProduction c){
 		ArrayList<Personnel> listePNQ = new ArrayList<Personnel>();
 		//Recherche de personnes non qualifiées
 		int  i = 0;
 		System.out.println("Demande de " + c.getNombre_Personne_Non_Qualifiee() + "Personne non qualifié ");
 		while (listePNQ.size()<c.getNombre_Personne_Non_Qualifiee() && i < persNQ.size()) {
-			if(persNQ.get(i).estdisponible() && c.getTemps()+persNQ.get(i).getTempsTravail()<persNQ.get(i).getTempsTravailMAX()) {
+			if(persNQ.get(i).estdisponible() && c.getTemps()+persNQ.get(i).getTempsTravail()<persNQ.get(i).getTempsTravailMAX() && !persNQ.get(i).estEnRepos(temps, temps + c.getTemps())) {
 				System.out.println("Personnel non qualifié : " +persNQ.get(i) + " disponible : ajout");
 				listePNQ.add(persNQ.get(i));
 				System.out.println("Il reste " + (c.getNombre_Personne_Non_Qualifiee()-listePNQ.size()) + " personnes non qualifie a trouver");
@@ -96,14 +96,14 @@ public class Prevision {
 	private static boolean traitementChaine(ChaineProduction c, int temps, ArrayList<Personnel_Qualifie> persQ, ArrayList<Personnel_Non_Qualifie> persNQ) {
 		boolean productionEnCours = false;
 		if(c.estOccupe(temps)) {
-			//Si la chaine c est occupée on la met en attente
+			//Si la chaine c est occupée on la garde en attente (on ne fait rien)
 			productionEnCours=true;
 		}else if (c.stockSuffisant() && c.aLeTemps(temps)) {
 			//si la chaine c n'est pas occupée, que le stock est suffisant pour la production et qu'elle à le temps de produire
 			//Alors on recherche le personnel necessaire au lancement
 			System.out.println("La chaine " + c.getNom() + " n'est pas occupé : recherche de personnel pour lancement" );
-			ArrayList<Personnel> listePNQ = Prevision.recherchePersonnelNonQualifie(persNQ, persQ, c);
-			ArrayList<Personnel_Qualifie> listePQ = Prevision.recherchePersonnelQualifie(persQ, c);
+			ArrayList<Personnel> listePNQ = Prevision.recherchePersonnelNonQualifie(temps, persNQ, persQ, c);
+			ArrayList<Personnel_Qualifie> listePQ = Prevision.recherchePersonnelQualifie(temps, persQ, c);
 			System.out.println(listePNQ.size() + "- " +c.getNombre_Personne_Non_Qualifiee() + " / " + listePQ.size() + " - "+c.getNombre_Personne_Qualifiee());
 			if(listePNQ.size()==c.getNombre_Personne_Non_Qualifiee() && listePQ.size()==c.getNombre_Personne_Qualifiee()) {
 				Prevision.miseEnRouteChaineProduction(listePNQ, listePQ, temps, c);

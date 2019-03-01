@@ -94,6 +94,19 @@ public abstract class Personnel {
 		this.tempsTravail+=temps;
 	}
 	
+	public boolean estEnRepos(int temps, int temps_travail) {
+		if (this.repos.contains(temps)) {
+			return true;
+		}else {
+			for (int t=temps; t<=temps_travail; t++) {
+				if (this.repos.contains(t)) {
+					return true;
+				}
+			}
+		}
+		return false;	
+	}
+	
 	public String toString() {
 		String retour = "";
 		retour += "Personnel - Code Personnel : " + this.codePersonnel + "\n";
@@ -135,6 +148,10 @@ public abstract class Personnel {
 	public boolean isDisponible() {
 		return disponible;
 	}
+	public ArrayList<Integer> getRepos(){
+		return this.repos;
+	}
+	
 	
 	
 
