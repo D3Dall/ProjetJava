@@ -167,8 +167,51 @@ public class Prevision {
 	}
 	
 	
+	private static ArrayList<ChaineProduction> ChainesProductionDysfonctionnelles(Entreprise entreprise){
+		ArrayList<ChaineProduction> chainesProductionInactives = new ArrayList<ChaineProduction>();
+		for(ChaineProduction cp: entreprise.getListeChaineProduction()) {
+			if (cp.estActive() && cp.getFinDeProduction()<= 60 - cp.getTemps()) {
+				chainesProductionInactives.add(cp);
+			}
+		}
+		return chainesProductionInactives;
+	}
 	
-	
+	private ArrayList<ChaineDysfonctionnelle> raisonsDysfonctionnements(Entreprise entreprise) {
+		ArrayList<ChaineProduction> chainesProductionDysfonctionnelles= ChainesProductionDysfonctionnelles(entreprise);
+		ArrayList<ChaineDysfonctionnelle> listeChainesDysfonctionnelles = new ArrayList<ChaineDysfonctionnelle>();
+		ArrayList<Personnel_Qualifie> PersonnelsQualifies = new ArrayList<Personnel_Qualifie>();
+		ArrayList<Personnel_Non_Qualifie> PersonnelsNonQualifies = new ArrayList<Personnel_Non_Qualifie>();
+		Prevision.separationPersonnelParType(PersonnelsQualifies, PersonnelsNonQualifies, entreprise.getListePersonnel());
+		for(ChaineProduction cp : chainesProductionDysfonctionnelles) {
+			String detail = "";
+			if(cp.stockSuffisant()) {
+				int nbPersonnelQualifieDispo = 0;
+				int nbPersonnelNonQualifieDispo = 0;
+				for(Personnel_Qualifie p : PersonnelsQualifies) {
+					if(p.estdisponible()) {
+						nbPersonnelQualifieDispo+=1;
+					}
+				}
+				for(Personnel_Non_Qualifie p : PersonnelsNonQualifies) {
+					if(p.estdisponible()) {
+						nbPersonnelNonQualifieDispo+=1;
+					}
+				}				
+				detail += "Personnel Qualifié Requis : " + cp.getNombre_Personne_Qualifiee() + " / Personnel Non Qualifié Requis : " + cp.getNombre_Personne_Non_Qualifiee()+"\nPersonnel Qualifié Disponible : " + nbPersonnelQualifieDispo + " / Personnel Non Qualifié Disponible : " + nbPersonnelNonQualifieDispo;
+				listeChainesDysfonctionnelles.add(new ChaineDysfonctionnelle(cp, "Manque de Personnel", detail));
+			}
+			else {
+				for(Couple<Element, Float> couple : cp.getEntree()) {
+					if(couple.getObjeta().getStock().getStock()<couple.getObjetb()) {
+						detail += "Element hors-stock :" + couple.getObjeta().getCodeElement() + " " + couple.getObjeta().getNom() + "Quantité nécessaire : " + couple.getObjetb() + " Quantité disponible : " + couple.getObjeta().getStock().getStock() + "\n";
+					}
+				}
+				listeChainesDysfonctionnelles.add(new ChaineDysfonctionnelle(cp, "Manque de Stock", detail));
+			}
+		}
+		return listeChainesDysfonctionnelles;
+	}
 	
 	
 	
