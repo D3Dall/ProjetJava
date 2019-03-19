@@ -1,0 +1,740 @@
+C001 - Chocolat 30 % - 1
+Element en Entrï¿½e :
+E012 - pate cacao
+prix d'achat : 12.0
+prix de vente :-1.0
+150.0 kg
+Quantitee dont on a besoin 3.0E014 - lait en poudre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 5.0E011 - beurre cacao
+prix d'achat : 3.0
+prix de vente :-1.0
+800.0 kg
+Quantitee dont on a besoin 2.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 3.0
+Element en Sortie :
+E019 - Chocolat 30 %
+prix d'achat : 10.0
+prix de vente :8.0
+20.0 litre
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C002 - Chocolat 40 % - 1
+Element en Entrï¿½e :
+E012 - pate cacao
+prix d'achat : 12.0
+prix de vente :-1.0
+150.0 kg
+Quantitee dont on a besoin 4.0E014 - lait en poudre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 4.0E011 - beurre cacao
+prix d'achat : 3.0
+prix de vente :-1.0
+800.0 kg
+Quantitee dont on a besoin 2.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 2.0
+Element en Sortie :
+E020 - Chocolat 40 %
+prix d'achat : 12.0
+prix de vente :10.0
+12.0 litre
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C003 - Chocolat 50 % - 1
+Element en Entrï¿½e :
+E012 - pate cacao
+prix d'achat : 12.0
+prix de vente :-1.0
+150.0 kg
+Quantitee dont on a besoin 5.0E011 - beurre cacao
+prix d'achat : 3.0
+prix de vente :-1.0
+800.0 kg
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 2.0
+Element en Sortie :
+E021 - Chocolat 50 %
+prix d'achat : -1.0
+prix de vente :16.0
+30.0 litre
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C004 - Pate biscuit Q1 - 3
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 3.0E008 - huile palme
+prix d'achat : 1.0
+prix de vente :-1.0
+5000.0 litre
+Quantitee dont on a besoin 2.0E051 - Poudre a lever
+prix d'achat : 2.0
+prix de vente :-1.0
+28.0 kg
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E022 - Pate biscuit Q1
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C005 - Pate biscuit Q2 - 2
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 3.0E009 - huile colza
+prix d'achat : 2.0
+prix de vente :-1.0
+1500.0 litre
+Quantitee dont on a besoin 2.0E015 - emulsifiant
+prix d'achat : 3.0
+prix de vente :-1.0
+10.0 litre
+Quantitee dont on a besoin 1.0E051 - Poudre a lever
+prix d'achat : 2.0
+prix de vente :-1.0
+28.0 kg
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E023 - Pate biscuit Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C006 - Pate biscuit Q3 - 2
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 3.0E006 - beurre
+prix d'achat : 3.0
+prix de vente :-1.0
+2500.0 kg
+Quantitee dont on a besoin 2.0E051 - Poudre a lever
+prix d'achat : 2.0
+prix de vente :-1.0
+28.0 kg
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E024 - Pate biscuit Q3
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C007 - Gateau marque A - 2
+Element en Entrï¿½e :
+E024 - Pate biscuit Q3
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0E021 - Chocolat 50 %
+prix d'achat : -1.0
+prix de vente :16.0
+30.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E025 - Gateau marque A
+prix d'achat : -1.0
+prix de vente :10.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C008 - Gateau marque B - 2
+Element en Entrï¿½e :
+E023 - Pate biscuit Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0E020 - Chocolat 40 %
+prix d'achat : 12.0
+prix de vente :10.0
+12.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E026 - Gateau marque B
+prix d'achat : -1.0
+prix de vente :8.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C009 - Gateau marque C - 2
+Element en Entrï¿½e :
+E022 - Pate biscuit Q1
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0E019 - Chocolat 30 %
+prix d'achat : 10.0
+prix de vente :8.0
+20.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E027 - Gateau marque C
+prix d'achat : -1.0
+prix de vente :7.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C010 - Pate levée huile - 3
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 20.0E009 - huile colza
+prix d'achat : 2.0
+prix de vente :-1.0
+1500.0 litre
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 5.0E016 - levure
+prix d'achat : 3.0
+prix de vente :-1.0
+89.0 unite
+Quantitee dont on a besoin 2.0
+Element en Sortie :
+E028 - Pate levée huile
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 kg
+Quantitee dont qui en ressort 25.0;
+
+
+
+
+C011 - Pate levée beurre - 3
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 20.0E006 - beurre
+prix d'achat : 3.0
+prix de vente :-1.0
+2500.0 kg
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 5.0E016 - levure
+prix d'achat : 3.0
+prix de vente :-1.0
+89.0 unite
+Quantitee dont on a besoin 2.0
+Element en Sortie :
+E029 - Pate levée beurre
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 kg
+Quantitee dont qui en ressort 25.0;
+
+
+
+
+C012 - Brioche - 2
+Element en Entrï¿½e :
+E028 - Pate levée huile
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 kg
+Quantitee dont on a besoin 10.0
+Element en Sortie :
+E030 - Brioche
+prix d'achat : -1.0
+prix de vente :14.0
+10.0 carton
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C013 - Brioche beurre - 2
+Element en Entrï¿½e :
+E029 - Pate levée beurre
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 kg
+Quantitee dont on a besoin 10.0
+Element en Sortie :
+E031 - Brioche beurre
+prix d'achat : -1.0
+prix de vente :16.0
+0.0 carton
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C014 - Pain chocolat A - 2
+Element en Entrï¿½e :
+E028 - Pate levée huile
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 kg
+Quantitee dont on a besoin 9.0E020 - Chocolat 40 %
+prix d'achat : 12.0
+prix de vente :10.0
+12.0 litre
+Quantitee dont on a besoin 3.0
+Element en Sortie :
+E032 - Pain chocolat A
+prix d'achat : -1.0
+prix de vente :14.0
+0.0 carton
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C015 - Pain chocolat B - 2
+Element en Entrï¿½e :
+E028 - Pate levée huile
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 kg
+Quantitee dont on a besoin 9.0E019 - Chocolat 30 %
+prix d'achat : 10.0
+prix de vente :8.0
+20.0 litre
+Quantitee dont on a besoin 3.0
+Element en Sortie :
+E033 - Pain chocolat B
+prix d'achat : -1.0
+prix de vente :12.0
+0.0 carton
+Quantitee dont qui en ressort 10.0;
+
+
+
+
+C016 - Biscuit marque A - 1
+Element en Entrï¿½e :
+E022 - Pate biscuit Q1
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 7.0
+Element en Sortie :
+E034 - Biscuit marque A
+prix d'achat : -1.0
+prix de vente :8.0
+0.0 carton
+Quantitee dont qui en ressort 7.0;
+
+
+
+
+C017 - Biscuit marque B et C - 1
+Element en Entrï¿½e :
+E023 - Pate biscuit Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 8.0
+Element en Sortie :
+E035 - Biscuit marque B et C
+prix d'achat : -1.0
+prix de vente :7.0
+0.0 carton
+Quantitee dont qui en ressort 8.0;
+
+
+
+
+C018 - Pate crepes - 2
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 10.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 2.0E014 - lait en poudre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 5.0E009 - huile colza
+prix d'achat : 2.0
+prix de vente :-1.0
+1500.0 litre
+Quantitee dont on a besoin 2.0E015 - emulsifiant
+prix d'achat : 3.0
+prix de vente :-1.0
+10.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E036 - Pate crepes
+prix d'achat : 9.0
+prix de vente :-1.0
+25.0 litre
+Quantitee dont qui en ressort 12.0;
+
+
+
+
+C019 - Crepes natures - 4
+Element en Entrï¿½e :
+E036 - Pate crepes
+prix d'achat : 9.0
+prix de vente :-1.0
+25.0 litre
+Quantitee dont on a besoin 10.0
+Element en Sortie :
+E037 - Crepes natures
+prix d'achat : -1.0
+prix de vente :7.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C020 - Crepes fourrees choc - 5
+Element en Entrï¿½e :
+E036 - Pate crepes
+prix d'achat : 9.0
+prix de vente :-1.0
+25.0 litre
+Quantitee dont on a besoin 10.0E019 - Chocolat 30 %
+prix d'achat : 10.0
+prix de vente :8.0
+20.0 litre
+Quantitee dont on a besoin 3.0
+Element en Sortie :
+E038 - Crepes fourrees choc
+prix d'achat : -1.0
+prix de vente :9.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C021 - Crepes fourres abricot - 5
+Element en Entrï¿½e :
+E036 - Pate crepes
+prix d'achat : 9.0
+prix de vente :-1.0
+25.0 litre
+Quantitee dont on a besoin 10.0E017 - confiture abricot
+prix d'achat : 2.0
+prix de vente :-1.0
+50.0 litre
+Quantitee dont on a besoin 3.0
+Element en Sortie :
+E039 - Crepes fourres abricot
+prix d'achat : -1.0
+prix de vente :8.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C022 - Brownies marque A - 2
+Element en Entrï¿½e :
+E023 - Pate biscuit Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0E005 - jaune oeuf
+prix d'achat : 2.0
+prix de vente :-1.0
+400.0 litre
+Quantitee dont on a besoin 2.0E021 - Chocolat 50 %
+prix d'achat : -1.0
+prix de vente :16.0
+30.0 litre
+Quantitee dont on a besoin 2.0E018 - noix
+prix d'achat : 5.0
+prix de vente :-1.0
+50.0 kg
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E040 - Brownies marque A
+prix d'achat : -1.0
+prix de vente :10.0
+0.0 carton
+Quantitee dont qui en ressort 6.0;
+
+
+
+
+C023 - Brownies marque B - 2
+Element en Entrï¿½e :
+E024 - Pate biscuit Q3
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0E005 - jaune oeuf
+prix d'achat : 2.0
+prix de vente :-1.0
+400.0 litre
+Quantitee dont on a besoin 2.0E020 - Chocolat 40 %
+prix d'achat : 12.0
+prix de vente :10.0
+12.0 litre
+Quantitee dont on a besoin 2.0E018 - noix
+prix d'achat : 5.0
+prix de vente :-1.0
+50.0 kg
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E040 - Brownies marque A
+prix d'achat : -1.0
+prix de vente :10.0
+0.0 carton
+Quantitee dont qui en ressort 6.0;
+
+
+
+
+C024 - Cookies Choc - 1
+Element en Entrï¿½e :
+E024 - Pate biscuit Q3
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 4.0E020 - Chocolat 40 %
+prix d'achat : 12.0
+prix de vente :10.0
+12.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E044 - Cookies Choc/Noix marque A
+prix d'achat : -1.0
+prix de vente :9.0
+0.0 carton
+Quantitee dont qui en ressort 3.0;
+E045 - Cookies Choc/Noix marque B
+prix d'achat : -1.0
+prix de vente :8.0
+0.0 carton
+Quantitee dont qui en ressort 2.0;
+
+
+
+
+C025 - Cookies Choc/Noix - 1
+Element en Entrï¿½e :
+E024 - Pate biscuit Q3
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 4.0E020 - Chocolat 40 %
+prix d'achat : 12.0
+prix de vente :10.0
+12.0 litre
+Quantitee dont on a besoin 1.0E018 - noix
+prix d'achat : 5.0
+prix de vente :-1.0
+50.0 kg
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E046 - Pate Madeleines Q1
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont qui en ressort 3.0;
+E047 - Pate Madeleines Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont qui en ressort 2.0;
+
+
+
+
+C026 - Pate Madeleines Q1 - 1
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 3.0E006 - beurre
+prix d'achat : 3.0
+prix de vente :-1.0
+2500.0 kg
+Quantitee dont on a besoin 1.0E051 - Poudre a lever
+prix d'achat : 2.0
+prix de vente :-1.0
+28.0 kg
+Quantitee dont on a besoin 1.0E004 - blanc oeuf
+prix d'achat : 2.0
+prix de vente :-1.0
+200.0 litre
+Quantitee dont on a besoin 1.0E005 - jaune oeuf
+prix d'achat : 2.0
+prix de vente :-1.0
+400.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E046 - Pate Madeleines Q1
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont qui en ressort 11.0;
+
+
+
+
+C027 - Pate Madeleines Q2 - 1
+Element en Entrï¿½e :
+E002 - farine
+prix d'achat : 1.0
+prix de vente :-1.0
+1500.0 kg
+Quantitee dont on a besoin 5.0E001 - Sucre
+prix d'achat : 1.0
+prix de vente :-1.0
+500.0 kg
+Quantitee dont on a besoin 3.0E008 - huile palme
+prix d'achat : 1.0
+prix de vente :-1.0
+5000.0 litre
+Quantitee dont on a besoin 1.0E051 - Poudre a lever
+prix d'achat : 2.0
+prix de vente :-1.0
+28.0 kg
+Quantitee dont on a besoin 1.0E004 - blanc oeuf
+prix d'achat : 2.0
+prix de vente :-1.0
+200.0 litre
+Quantitee dont on a besoin 1.0E005 - jaune oeuf
+prix d'achat : 2.0
+prix de vente :-1.0
+400.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E047 - Pate Madeleines Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont qui en ressort 11.0;
+
+
+
+
+C028 - Madeleines marque A - 2
+Element en Entrï¿½e :
+E046 - Pate Madeleines Q1
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0
+Element en Sortie :
+E048 - Madeleines marque A
+prix d'achat : -1.0
+prix de vente :8.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C029 - Madeleines marque B - 2
+Element en Entrï¿½e :
+E047 - Pate Madeleines Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0
+Element en Sortie :
+E049 - Madeleines marque B
+prix d'achat : -1.0
+prix de vente :7.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+
+C030 - Madeleines Choc - 2
+Element en Entrï¿½e :
+E047 - Pate Madeleines Q2
+prix d'achat : -1.0
+prix de vente :-1.0
+0.0 litre
+Quantitee dont on a besoin 5.0E019 - Chocolat 30 %
+prix d'achat : 10.0
+prix de vente :8.0
+20.0 litre
+Quantitee dont on a besoin 1.0
+Element en Sortie :
+E050 - Madeleines Choc
+prix d'achat : -1.0
+prix de vente :8.0
+0.0 carton
+Quantitee dont qui en ressort 5.0;
+
+
+
+

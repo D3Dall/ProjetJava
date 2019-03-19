@@ -3,7 +3,9 @@ package gestionfichier;
 import java.io.IOException;
 
 import core.Entreprise;
-import ihm.JModeleTabEmploiDuTemps;
+import ihm.JModeleTab_CP_EDT;
+import ihm.JModeleTab_EDT;
+import ihm.JModeleTab_P_EDT;
 
 public class FichierCSVEmploiDuTemps extends FichierCSV {
 	protected WriteFile wf;
@@ -19,8 +21,8 @@ public class FichierCSVEmploiDuTemps extends FichierCSV {
 		
 	}
 
-	public void ecriture(JModeleTabEmploiDuTemps jent) throws IOException {
-		this.wf.writeToFile(jent.toString());
+	public void ecriture(JModeleTab_EDT jModeleTab_EDT) throws IOException {
+		this.wf.writeToFile(jModeleTab_EDT.toString());
 	}
 
 }
