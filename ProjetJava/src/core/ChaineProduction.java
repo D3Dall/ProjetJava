@@ -1,9 +1,6 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
 
 public class ChaineProduction {
 	
@@ -55,6 +52,11 @@ public class ChaineProduction {
 		 */
 	private int nombre_Personne_Qualifiee;
 	
+	/**
+	 * Raison des possibles dysfonctionnement
+	 */
+	private ArrayList<Dysfonctionnement> listeDysfonctionnement; 
+	
 	
         /**
          * Crée une chaine de production avec une liste de production vide
@@ -88,6 +90,7 @@ public class ChaineProduction {
 		this.listeproduction = new ArrayList<Production>();
 		this.nombre_Personne_Non_Qualifiee =nbrPersNQ;
 		this.nombre_Personne_Qualifiee = nbrPersQ;
+		this.listeDysfonctionnement = new ArrayList<Dysfonctionnement>();
 	}
         
         /**
@@ -112,6 +115,10 @@ public class ChaineProduction {
 		this(codeChaineProduction, nom, 0, temps, nbrPersNQ, nbrPersQ);
 	}
         
+	public void ajouterDysfonctionnement(Dysfonctionnement d) {
+		this.listeDysfonctionnement.add(d);
+	}	
+	
         /**
          * Ajoute un element dans le dictionnaire de production en ENTREE (entree).
          * 
@@ -198,7 +205,12 @@ public class ChaineProduction {
 		for(Couple<Element, Float> c : this.sortie) {
 			src += c.getObjeta().getCodeElement() + " " + c.getObjeta().getNom() + " Quantitée qui en ressort " + c.getObjetb() + ";\n";
 		}
-		src += "\n\n\n";
+		src+="\nLa chaine a produit " + (60-this.getListeDysfonctionnement().size()) + "/60 H\n";
+		src+="\nLa chaine a essayé de produire " + this.getListeDysfonctionnement().size() + " fois sans succès :\n";
+		for(Dysfonctionnement d : this.getListeDysfonctionnement()) {
+			src+=""+ d + "\n\n";
+		}
+		src += "\n\n\n\n";
 		return src;
 		
 	}
@@ -219,6 +231,7 @@ public class ChaineProduction {
 			}
 		}
 		this.listeproduction.clear();
+		this.listeDysfonctionnement.clear();
 	}
 	
         /**
@@ -419,7 +432,12 @@ public class ChaineProduction {
 
     public ArrayList<Production> getListeproduction() {
         return this.listeproduction;
-    }  
+    }
+
+	public ArrayList<Dysfonctionnement> getListeDysfonctionnement() {
+		return listeDysfonctionnement;
+	}
+    
         
         
 }

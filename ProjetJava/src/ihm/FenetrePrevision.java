@@ -49,8 +49,10 @@ public class FenetrePrevision extends Fenetre {
     				try {
     					FichierExport fe = new FichierExport(dir.getPath()+ "/compte_rendu.txt");
     					fe.ecriture();
-    					FichierCSVEmploiDuTemps fEDT = new  FichierCSVEmploiDuTemps(dir.getPath() + "/emploi_du_temps.csv");
-    					fEDT.ecriture(panelprevision.getModeleTabEDT());
+    					FichierCSVEmploiDuTemps fEDT_personnels = new  FichierCSVEmploiDuTemps(dir.getPath() + "/emploi_du_temps_personnels.csv");
+    					FichierCSVEmploiDuTemps fEDT_chaines = new  FichierCSVEmploiDuTemps(dir.getPath() + "/emploi_du_temps_chaines.csv");;
+    					fEDT_personnels.ecriture(panelprevision.getModeleTabPEDT());
+    					fEDT_chaines.ecriture(panelprevision.getModeleCPEDT());
     				}catch(Exception e) {
     					new FenetreErr(e.getMessage() + " " + e);
     				}
