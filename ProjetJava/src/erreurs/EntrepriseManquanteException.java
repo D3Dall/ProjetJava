@@ -3,7 +3,7 @@ package erreurs;
 public class EntrepriseManquanteException extends Exception {
 	
 	public EntrepriseManquanteException() {
-		super("Aucun contenu");
+		super("Aucune données importées");
 	}
 	
 	public String toString() {

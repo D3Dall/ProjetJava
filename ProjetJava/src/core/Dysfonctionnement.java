@@ -1,6 +1,6 @@
 package core;
 
-public class Dysfonctionnement extends Exception {
+public class Dysfonctionnement {
 	private int heure;
 	private String causeErreur;
 	private String detailErreur;
